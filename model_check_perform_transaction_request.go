@@ -23,7 +23,7 @@ var _ MappedNullable = &CheckPerformTransactionRequest{}
 // CheckPerformTransactionRequest struct for CheckPerformTransactionRequest
 type CheckPerformTransactionRequest struct {
 	Amount int32 `form:"amount" json:"amount"`
-	Account CheckPerformTransactionRequestAccount `form:"account" json:"account"`
+	Account map[string]interface{} `form:"account" json:"account"`
 }
 
 type _CheckPerformTransactionRequest CheckPerformTransactionRequest
@@ -32,7 +32,7 @@ type _CheckPerformTransactionRequest CheckPerformTransactionRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCheckPerformTransactionRequest(amount int32, account CheckPerformTransactionRequestAccount) *CheckPerformTransactionRequest {
+func NewCheckPerformTransactionRequest(amount int32, account map[string]interface{}) *CheckPerformTransactionRequest {
 	this := CheckPerformTransactionRequest{}
 	this.Amount = amount
 	this.Account = account
@@ -72,9 +72,9 @@ func (o *CheckPerformTransactionRequest) SetAmount(v int32) {
 }
 
 // GetAccount returns the Account field value
-func (o *CheckPerformTransactionRequest) GetAccount() CheckPerformTransactionRequestAccount {
+func (o *CheckPerformTransactionRequest) GetAccount() map[string]interface{} {
 	if o == nil {
-		var ret CheckPerformTransactionRequestAccount
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -83,15 +83,15 @@ func (o *CheckPerformTransactionRequest) GetAccount() CheckPerformTransactionReq
 
 // GetAccountOk returns a tuple with the Account field value
 // and a boolean to check if the value has been set.
-func (o *CheckPerformTransactionRequest) GetAccountOk() (*CheckPerformTransactionRequestAccount, bool) {
+func (o *CheckPerformTransactionRequest) GetAccountOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Account, true
+	return o.Account, true
 }
 
 // SetAccount sets field value
-func (o *CheckPerformTransactionRequest) SetAccount(v CheckPerformTransactionRequestAccount) {
+func (o *CheckPerformTransactionRequest) SetAccount(v map[string]interface{}) {
 	o.Account = v
 }
 

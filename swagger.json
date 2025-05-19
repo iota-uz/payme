@@ -25,202 +25,6 @@
     }
   ],
   "paths": {
-    "/CheckPerformTransaction": {
-      "post": {
-        "summary": "CheckPerformTransaction operation",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CheckPerformTransactionRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "CheckPerformTransaction response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CheckPerformTransactionResponse"
-                }
-              }
-            }
-          }
-        },
-        "operationId": "Checkperformtransaction"
-      }
-    },
-    "/CreateTransaction": {
-      "post": {
-        "summary": "CreateTransaction operation",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateTransactionRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "CreateTransaction response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CreateTransactionResponse"
-                }
-              }
-            }
-          }
-        },
-        "operationId": "Createtransaction"
-      }
-    },
-    "/PerformTransaction": {
-      "post": {
-        "summary": "PerformTransaction operation",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PerformTransactionRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "PerformTransaction response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PerformTransactionResponse"
-                }
-              }
-            }
-          }
-        },
-        "operationId": "Performtransaction"
-      }
-    },
-    "/CancelTransaction": {
-      "post": {
-        "summary": "CancelTransaction operation",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CancelTransactionRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "CancelTransaction response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CancelTransactionResponse"
-                }
-              }
-            }
-          }
-        },
-        "operationId": "Canceltransaction"
-      }
-    },
-    "/CheckTransaction": {
-      "post": {
-        "summary": "CheckTransaction operation",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CheckTransactionRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "CheckTransaction response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CheckTransactionResponse"
-                }
-              }
-            }
-          }
-        },
-        "operationId": "Checktransaction"
-      }
-    },
-    "/GetStatement": {
-      "post": {
-        "summary": "GetStatement operation",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GetStatementRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "GetStatement response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetStatementResponse"
-                }
-              }
-            }
-          }
-        },
-        "operationId": "Getstatement"
-      }
-    },
-    "/SetFiscalData": {
-      "post": {
-        "summary": "SetFiscalData operation",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SetFiscalDataRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "SetFiscalData response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SetFiscalDataResponse"
-                }
-              }
-            }
-          }
-        },
-        "operationId": "Setfiscaldata"
-      }
-    }
   },
   "components": {
     "schemas": {
@@ -281,14 +85,6 @@
           }
         }
       },
-      "Account": {
-        "type": "object",
-        "properties": {
-          "phone": {
-            "type": "string"
-          }
-        }
-      },
       "CheckPerformTransactionRequest": {
         "type": "object",
         "required": [
@@ -301,14 +97,7 @@
           },
           "account": {
             "type": "object",
-            "required": [
-              "phone"
-            ],
-            "properties": {
-              "phone": {
-                "type": "string"
-              }
-            }
+            "additionalProperties": {}
           }
         }
       },
@@ -400,7 +189,8 @@
             "type": "integer"
           },
           "account": {
-            "$ref": "#/components/schemas/Account"
+            "type": "object",
+            "additionalProperties": {}
           }
         }
       },
@@ -484,7 +274,8 @@
             "type": "integer"
           },
           "account": {
-            "$ref": "#/components/schemas/Account"
+            "type": "object",
+            "additionalProperties": {}
           },
           "create_time": {
             "type": "integer",
@@ -748,6 +539,141 @@
                 "type": "string"
               }
             }
+          }
+        }
+      },
+      "JSONRPCRequest": {
+        "type": "object",
+        "required": [
+          "method",
+          "params",
+          "id"
+        ],
+        "properties": {
+          "jsonrpc": {
+            "type": "string",
+            "example": "2.0"
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "CheckPerformTransaction",
+              "CreateTransaction",
+              "PerformTransaction",
+              "CancelTransaction",
+              "CheckTransaction",
+              "GetStatement",
+              "SetFiscalData"
+            ]
+          },
+          "params": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CheckPerformTransactionRequest"
+              },
+              {
+                "$ref": "#/components/schemas/CreateTransactionRequest"
+              },
+              {
+                "$ref": "#/components/schemas/PerformTransactionRequest"
+              },
+              {
+                "$ref": "#/components/schemas/CancelTransactionRequest"
+              },
+              {
+                "$ref": "#/components/schemas/CheckTransactionRequest"
+              },
+              {
+                "$ref": "#/components/schemas/GetStatementRequest"
+              },
+              {
+                "$ref": "#/components/schemas/SetFiscalDataRequest"
+              }
+            ]
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "JSONRPCSuccessResponse": {
+        "type": "object",
+        "required": [
+          "result",
+          "id"
+        ],
+        "properties": {
+          "result": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CheckPerformTransactionResponse"
+              },
+              {
+                "$ref": "#/components/schemas/CreateTransactionResponse"
+              },
+              {
+                "$ref": "#/components/schemas/PerformTransactionResponse"
+              },
+              {
+                "$ref": "#/components/schemas/CancelTransactionResponse"
+              },
+              {
+                "$ref": "#/components/schemas/CheckTransactionResponse"
+              },
+              {
+                "$ref": "#/components/schemas/GetStatementResponse"
+              },
+              {
+                "$ref": "#/components/schemas/SetFiscalDataResponse"
+              }
+            ]
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "JSONRPCErrorResponse": {
+        "type": "object",
+        "required": [
+          "error",
+          "id"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "message": {
+                "type": "object",
+                "properties": {
+                  "ru": {
+                    "type": "string"
+                  },
+                  "uz": {
+                    "type": "string"
+                  },
+                  "en": {
+                    "type": "string"
+                  }
+                }
+              },
+              "data": {
+                "type": "string"
+              }
+            }
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       }

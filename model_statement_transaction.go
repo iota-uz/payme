@@ -25,7 +25,7 @@ type StatementTransaction struct {
 	Id string `form:"id" json:"id"`
 	Time int64 `form:"time" json:"time"`
 	Amount int32 `form:"amount" json:"amount"`
-	Account Account `form:"account" json:"account"`
+	Account map[string]interface{} `form:"account" json:"account"`
 	CreateTime int64 `form:"create_time" json:"create_time"`
 	PerformTime int64 `form:"perform_time" json:"perform_time"`
 	CancelTime int64 `form:"cancel_time" json:"cancel_time"`
@@ -41,7 +41,7 @@ type _StatementTransaction StatementTransaction
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStatementTransaction(id string, time int64, amount int32, account Account, createTime int64, performTime int64, cancelTime int64, transaction string, state int32, reason NullableInt32) *StatementTransaction {
+func NewStatementTransaction(id string, time int64, amount int32, account map[string]interface{}, createTime int64, performTime int64, cancelTime int64, transaction string, state int32, reason NullableInt32) *StatementTransaction {
 	this := StatementTransaction{}
 	this.Id = id
 	this.Time = time
@@ -137,9 +137,9 @@ func (o *StatementTransaction) SetAmount(v int32) {
 }
 
 // GetAccount returns the Account field value
-func (o *StatementTransaction) GetAccount() Account {
+func (o *StatementTransaction) GetAccount() map[string]interface{} {
 	if o == nil {
-		var ret Account
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -148,15 +148,15 @@ func (o *StatementTransaction) GetAccount() Account {
 
 // GetAccountOk returns a tuple with the Account field value
 // and a boolean to check if the value has been set.
-func (o *StatementTransaction) GetAccountOk() (*Account, bool) {
+func (o *StatementTransaction) GetAccountOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Account, true
+	return o.Account, true
 }
 
 // SetAccount sets field value
-func (o *StatementTransaction) SetAccount(v Account) {
+func (o *StatementTransaction) SetAccount(v map[string]interface{}) {
 	o.Account = v
 }
 

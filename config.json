@@ -18,7 +18,7 @@
   "prependFormOrBodyParameters": false,
   "structPrefix": true,
   "useDefaultValuesForRequiredVars": false,
-  "useOneOfDiscriminatorLookup": false,
+  "useOneOfDiscriminatorLookup": true,
   "withAWSV4Signature": false,
   "withGoMod": true,
   "withXml": true,

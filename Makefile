@@ -51,3 +51,8 @@ clean-generated:
 	else \
 		echo "⚠️  No file list found at $(GENERATED_FILES_LIST)"; \
 	fi
+
+lint-fix:
+	@echo "🔧 Running golangci-lint with --fix..."
+	@golangci-lint run --fix ./...
+	@echo "✅ Lint fix complete"

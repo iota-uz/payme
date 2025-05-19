@@ -25,7 +25,7 @@ type CreateTransactionRequest struct {
 	Id string `form:"id" json:"id"`
 	Time int64 `form:"time" json:"time"`
 	Amount int32 `form:"amount" json:"amount"`
-	Account Account `form:"account" json:"account"`
+	Account map[string]interface{} `form:"account" json:"account"`
 }
 
 type _CreateTransactionRequest CreateTransactionRequest
@@ -34,7 +34,7 @@ type _CreateTransactionRequest CreateTransactionRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateTransactionRequest(id string, time int64, amount int32, account Account) *CreateTransactionRequest {
+func NewCreateTransactionRequest(id string, time int64, amount int32, account map[string]interface{}) *CreateTransactionRequest {
 	this := CreateTransactionRequest{}
 	this.Id = id
 	this.Time = time
@@ -124,9 +124,9 @@ func (o *CreateTransactionRequest) SetAmount(v int32) {
 }
 
 // GetAccount returns the Account field value
-func (o *CreateTransactionRequest) GetAccount() Account {
+func (o *CreateTransactionRequest) GetAccount() map[string]interface{} {
 	if o == nil {
-		var ret Account
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -135,15 +135,15 @@ func (o *CreateTransactionRequest) GetAccount() Account {
 
 // GetAccountOk returns a tuple with the Account field value
 // and a boolean to check if the value has been set.
-func (o *CreateTransactionRequest) GetAccountOk() (*Account, bool) {
+func (o *CreateTransactionRequest) GetAccountOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Account, true
+	return o.Account, true
 }
 
 // SetAccount sets field value
-func (o *CreateTransactionRequest) SetAccount(v Account) {
+func (o *CreateTransactionRequest) SetAccount(v map[string]interface{}) {
 	o.Account = v
 }
 

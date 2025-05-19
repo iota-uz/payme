@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | **int32** |  | 
-**Account** | [**CheckPerformTransactionRequestAccount**](CheckPerformTransactionRequestAccount.md) |  | 
+**Account** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewCheckPerformTransactionRequest
 
-`func NewCheckPerformTransactionRequest(amount int32, account CheckPerformTransactionRequestAccount, ) *CheckPerformTransactionRequest`
+`func NewCheckPerformTransactionRequest(amount int32, account map[string]interface{}, ) *CheckPerformTransactionRequest`
 
 NewCheckPerformTransactionRequest instantiates a new CheckPerformTransactionRequest object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetAmount sets Amount field to given value.
 
 ### GetAccount
 
-`func (o *CheckPerformTransactionRequest) GetAccount() CheckPerformTransactionRequestAccount`
+`func (o *CheckPerformTransactionRequest) GetAccount() map[string]interface{}`
 
 GetAccount returns the Account field if non-nil, zero value otherwise.
 
 ### GetAccountOk
 
-`func (o *CheckPerformTransactionRequest) GetAccountOk() (*CheckPerformTransactionRequestAccount, bool)`
+`func (o *CheckPerformTransactionRequest) GetAccountOk() (*map[string]interface{}, bool)`
 
 GetAccountOk returns a tuple with the Account field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccount
 
-`func (o *CheckPerformTransactionRequest) SetAccount(v CheckPerformTransactionRequestAccount)`
+`func (o *CheckPerformTransactionRequest) SetAccount(v map[string]interface{})`
 
 SetAccount sets Account field to given value.
 
