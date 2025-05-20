@@ -12,8 +12,8 @@ Contact: danil@iota.uz
 package paymeapi
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &CreateTransactionRequest{}
 
 // CreateTransactionRequest struct for CreateTransactionRequest
 type CreateTransactionRequest struct {
-	Id string `form:"id" json:"id"`
-	Time int64 `form:"time" json:"time"`
-	Amount int32 `form:"amount" json:"amount"`
+	Id      string                 `form:"id" json:"id"`
+	Time    int64                  `form:"time" json:"time"`
+	Amount  float64                `form:"amount" json:"amount"`
 	Account map[string]interface{} `form:"account" json:"account"`
 }
 
@@ -34,7 +34,7 @@ type _CreateTransactionRequest CreateTransactionRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateTransactionRequest(id string, time int64, amount int32, account map[string]interface{}) *CreateTransactionRequest {
+func NewCreateTransactionRequest(id string, time int64, amount float64, account map[string]interface{}) *CreateTransactionRequest {
 	this := CreateTransactionRequest{}
 	this.Id = id
 	this.Time = time
@@ -100,9 +100,9 @@ func (o *CreateTransactionRequest) SetTime(v int64) {
 }
 
 // GetAmount returns the Amount field value
-func (o *CreateTransactionRequest) GetAmount() int32 {
+func (o *CreateTransactionRequest) GetAmount() float64 {
 	if o == nil {
-		var ret int32
+		var ret float64
 		return ret
 	}
 
@@ -111,7 +111,7 @@ func (o *CreateTransactionRequest) GetAmount() int32 {
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *CreateTransactionRequest) GetAmountOk() (*int32, bool) {
+func (o *CreateTransactionRequest) GetAmountOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -119,7 +119,7 @@ func (o *CreateTransactionRequest) GetAmountOk() (*int32, bool) {
 }
 
 // SetAmount sets field value
-func (o *CreateTransactionRequest) SetAmount(v int32) {
+func (o *CreateTransactionRequest) SetAmount(v float64) {
 	o.Amount = v
 }
 
@@ -148,7 +148,7 @@ func (o *CreateTransactionRequest) SetAccount(v map[string]interface{}) {
 }
 
 func (o CreateTransactionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -180,10 +180,10 @@ func (o *CreateTransactionRequest) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -239,5 +239,3 @@ func (v *NullableCreateTransactionRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

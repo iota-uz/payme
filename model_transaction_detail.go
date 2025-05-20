@@ -12,8 +12,8 @@ Contact: danil@iota.uz
 package paymeapi
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &TransactionDetail{}
 
 // TransactionDetail struct for TransactionDetail
 type TransactionDetail struct {
-	ReceiptType int32 `form:"receipt_type" json:"receipt_type"`
-	Shipping *TransactionDetailShipping `form:"shipping" json:"shipping,omitempty"`
-	Items []TransactionItem `form:"items" json:"items"`
+	ReceiptType int32                      `form:"receipt_type" json:"receipt_type"`
+	Shipping    *TransactionDetailShipping `form:"shipping" json:"shipping,omitempty"`
+	Items       []TransactionItem          `form:"items" json:"items"`
 }
 
 type _TransactionDetail TransactionDetail
@@ -129,7 +129,7 @@ func (o *TransactionDetail) SetItems(v []TransactionItem) {
 }
 
 func (o TransactionDetail) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,10 +160,10 @@ func (o *TransactionDetail) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -219,5 +219,3 @@ func (v *NullableTransactionDetail) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

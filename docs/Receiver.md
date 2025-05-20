@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
-**Amount** | **int32** |  | 
+**Amount** | **float64** |  | 
 
 ## Methods
 
 ### NewReceiver
 
-`func NewReceiver(id string, amount int32, ) *Receiver`
+`func NewReceiver(id string, amount float64, ) *Receiver`
 
 NewReceiver instantiates a new Receiver object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetId sets Id field to given value.
 
 ### GetAmount
 
-`func (o *Receiver) GetAmount() int32`
+`func (o *Receiver) GetAmount() float64`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *Receiver) GetAmountOk() (*int32, bool)`
+`func (o *Receiver) GetAmountOk() (*float64, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *Receiver) SetAmount(v int32)`
+`func (o *Receiver) SetAmount(v float64)`
 
 SetAmount sets Amount field to given value.
 

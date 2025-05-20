@@ -53,6 +53,7 @@ clean-generated:
 	fi
 
 lint-fix:
-	@echo "🔧 Running golangci-lint with --fix..."
+	@echo "🔧 Running goimports and golangci-lint..."
+	@goimports -w .
 	@golangci-lint run --fix ./...
 	@echo "✅ Lint fix complete"

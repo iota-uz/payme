@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **Time** | **int64** |  | 
-**Amount** | **int32** |  | 
+**Amount** | **float64** |  | 
 **Account** | **map[string]interface{}** |  | 
 **CreateTime** | **int64** |  | 
 **PerformTime** | **int64** |  | 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewStatementTransaction
 
-`func NewStatementTransaction(id string, time int64, amount int32, account map[string]interface{}, createTime int64, performTime int64, cancelTime int64, transaction string, state int32, reason NullableInt32, ) *StatementTransaction`
+`func NewStatementTransaction(id string, time int64, amount float64, account map[string]interface{}, createTime int64, performTime int64, cancelTime int64, transaction string, state int32, reason NullableInt32, ) *StatementTransaction`
 
 NewStatementTransaction instantiates a new StatementTransaction object
 This constructor will assign default values to properties that have it defined,
@@ -77,20 +77,20 @@ SetTime sets Time field to given value.
 
 ### GetAmount
 
-`func (o *StatementTransaction) GetAmount() int32`
+`func (o *StatementTransaction) GetAmount() float64`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *StatementTransaction) GetAmountOk() (*int32, bool)`
+`func (o *StatementTransaction) GetAmountOk() (*float64, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *StatementTransaction) SetAmount(v int32)`
+`func (o *StatementTransaction) SetAmount(v float64)`
 
 SetAmount sets Amount field to given value.
 

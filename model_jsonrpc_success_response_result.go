@@ -18,13 +18,13 @@ import (
 
 // JSONRPCSuccessResponseResult - struct for JSONRPCSuccessResponseResult
 type JSONRPCSuccessResponseResult struct {
-	CancelTransactionResponse *CancelTransactionResponse
+	CancelTransactionResponse       *CancelTransactionResponse
 	CheckPerformTransactionResponse *CheckPerformTransactionResponse
-	CheckTransactionResponse *CheckTransactionResponse
-	CreateTransactionResponse *CreateTransactionResponse
-	GetStatementResponse *GetStatementResponse
-	PerformTransactionResponse *PerformTransactionResponse
-	SetFiscalDataResponse *SetFiscalDataResponse
+	CheckTransactionResponse        *CheckTransactionResponse
+	CreateTransactionResponse       *CreateTransactionResponse
+	GetStatementResponse            *GetStatementResponse
+	PerformTransactionResponse      *PerformTransactionResponse
+	SetFiscalDataResponse           *SetFiscalDataResponse
 }
 
 // CancelTransactionResponseAsJSONRPCSuccessResponseResult is a convenience function that returns CancelTransactionResponse wrapped in JSONRPCSuccessResponseResult
@@ -75,7 +75,6 @@ func SetFiscalDataResponseAsJSONRPCSuccessResponseResult(v *SetFiscalDataRespons
 		SetFiscalDataResponse: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *JSONRPCSuccessResponseResult) UnmarshalJSON(data []byte) error {
@@ -224,7 +223,7 @@ func (src JSONRPCSuccessResponseResult) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *JSONRPCSuccessResponseResult) GetActualInstance() (interface{}) {
+func (obj *JSONRPCSuccessResponseResult) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -295,5 +294,3 @@ func (v *NullableJSONRPCSuccessResponseResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

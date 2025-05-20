@@ -12,8 +12,8 @@ Contact: danil@iota.uz
 package paymeapi
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &Receiver{}
 
 // Receiver struct for Receiver
 type Receiver struct {
-	Id string `form:"id" json:"id"`
-	Amount int32 `form:"amount" json:"amount"`
+	Id     string  `form:"id" json:"id"`
+	Amount float64 `form:"amount" json:"amount"`
 }
 
 type _Receiver Receiver
@@ -32,7 +32,7 @@ type _Receiver Receiver
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewReceiver(id string, amount int32) *Receiver {
+func NewReceiver(id string, amount float64) *Receiver {
 	this := Receiver{}
 	this.Id = id
 	this.Amount = amount
@@ -72,9 +72,9 @@ func (o *Receiver) SetId(v string) {
 }
 
 // GetAmount returns the Amount field value
-func (o *Receiver) GetAmount() int32 {
+func (o *Receiver) GetAmount() float64 {
 	if o == nil {
-		var ret int32
+		var ret float64
 		return ret
 	}
 
@@ -83,7 +83,7 @@ func (o *Receiver) GetAmount() int32 {
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *Receiver) GetAmountOk() (*int32, bool) {
+func (o *Receiver) GetAmountOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -91,12 +91,12 @@ func (o *Receiver) GetAmountOk() (*int32, bool) {
 }
 
 // SetAmount sets field value
-func (o *Receiver) SetAmount(v int32) {
+func (o *Receiver) SetAmount(v float64) {
 	o.Amount = v
 }
 
 func (o Receiver) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -124,10 +124,10 @@ func (o *Receiver) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -183,5 +183,3 @@ func (v *NullableReceiver) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

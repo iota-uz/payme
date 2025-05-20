@@ -81,7 +81,8 @@
             "type": "string"
           },
           "amount": {
-            "type": "integer"
+            "type": "number",
+            "format": "double"
           }
         }
       },
@@ -93,7 +94,8 @@
         ],
         "properties": {
           "amount": {
-            "type": "integer"
+            "type": "number",
+            "format": "double"
           },
           "account": {
             "type": "object",
@@ -186,7 +188,8 @@
             "format": "int64"
           },
           "amount": {
-            "type": "integer"
+            "type": "number",
+            "format": "double"
           },
           "account": {
             "type": "object",
@@ -271,7 +274,8 @@
             "format": "int64"
           },
           "amount": {
-            "type": "integer"
+            "type": "number",
+            "format": "double"
           },
           "account": {
             "type": "object",

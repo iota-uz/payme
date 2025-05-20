@@ -21,7 +21,7 @@ var _ MappedNullable = &TransactionDetailShipping{}
 // TransactionDetailShipping struct for TransactionDetailShipping
 type TransactionDetailShipping struct {
 	Title *string `form:"title" json:"title,omitempty"`
-	Price *int32 `form:"price" json:"price,omitempty"`
+	Price *int32  `form:"price" json:"price,omitempty"`
 }
 
 // NewTransactionDetailShipping instantiates a new TransactionDetailShipping object
@@ -106,7 +106,7 @@ func (o *TransactionDetailShipping) SetPrice(v int32) {
 }
 
 func (o TransactionDetailShipping) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,5 +159,3 @@ func (v *NullableTransactionDetailShipping) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

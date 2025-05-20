@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | **int32** |  | 
+**Amount** | **float64** |  | 
 **Account** | **map[string]map[string]interface{}** |  | 
 **Id** | **string** |  | 
 **Time** | **int64** |  | 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewJSONRPCRequestParams
 
-`func NewJSONRPCRequestParams(amount int32, account map[string]map[string]interface{}, id string, time int64, reason int32, from int64, to int64, type_ string, fiscalData FiscalData, ) *JSONRPCRequestParams`
+`func NewJSONRPCRequestParams(amount float64, account map[string]map[string]interface{}, id string, time int64, reason int32, from int64, to int64, type_ string, fiscalData FiscalData, ) *JSONRPCRequestParams`
 
 NewJSONRPCRequestParams instantiates a new JSONRPCRequestParams object
 This constructor will assign default values to properties that have it defined,
@@ -35,20 +35,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAmount
 
-`func (o *JSONRPCRequestParams) GetAmount() int32`
+`func (o *JSONRPCRequestParams) GetAmount() float64`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *JSONRPCRequestParams) GetAmountOk() (*int32, bool)`
+`func (o *JSONRPCRequestParams) GetAmountOk() (*float64, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *JSONRPCRequestParams) SetAmount(v int32)`
+`func (o *JSONRPCRequestParams) SetAmount(v float64)`
 
 SetAmount sets Amount field to given value.
 

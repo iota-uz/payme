@@ -12,8 +12,8 @@ Contact: danil@iota.uz
 package paymeapi
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,13 +22,13 @@ var _ MappedNullable = &TransactionItem{}
 
 // TransactionItem struct for TransactionItem
 type TransactionItem struct {
-	Discount int32 `form:"discount" json:"discount"`
-	Title string `form:"title" json:"title"`
-	Price int32 `form:"price" json:"price"`
-	Count int32 `form:"count" json:"count"`
-	Code string `form:"code" json:"code"`
-	Units int32 `form:"units" json:"units"`
-	VatPercent int32 `form:"vat_percent" json:"vat_percent"`
+	Discount    int32  `form:"discount" json:"discount"`
+	Title       string `form:"title" json:"title"`
+	Price       int32  `form:"price" json:"price"`
+	Count       int32  `form:"count" json:"count"`
+	Code        string `form:"code" json:"code"`
+	Units       int32  `form:"units" json:"units"`
+	VatPercent  int32  `form:"vat_percent" json:"vat_percent"`
 	PackageCode string `form:"package_code" json:"package_code"`
 }
 
@@ -252,7 +252,7 @@ func (o *TransactionItem) SetPackageCode(v string) {
 }
 
 func (o TransactionItem) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -292,10 +292,10 @@ func (o *TransactionItem) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -351,5 +351,3 @@ func (v *NullableTransactionItem) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

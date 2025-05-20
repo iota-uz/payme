@@ -12,8 +12,8 @@ Contact: danil@iota.uz
 package paymeapi
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,10 +22,10 @@ var _ MappedNullable = &JSONRPCRequest{}
 
 // JSONRPCRequest struct for JSONRPCRequest
 type JSONRPCRequest struct {
-	Jsonrpc *string `form:"jsonrpc" json:"jsonrpc,omitempty"`
-	Method string `form:"method" json:"method"`
-	Params JSONRPCRequestParams `form:"params" json:"params"`
-	Id int64 `form:"id" json:"id"`
+	Jsonrpc *string              `form:"jsonrpc" json:"jsonrpc,omitempty"`
+	Method  string               `form:"method" json:"method"`
+	Params  JSONRPCRequestParams `form:"params" json:"params"`
+	Id      int64                `form:"id" json:"id"`
 }
 
 type _JSONRPCRequest JSONRPCRequest
@@ -155,7 +155,7 @@ func (o *JSONRPCRequest) SetId(v int64) {
 }
 
 func (o JSONRPCRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -188,10 +188,10 @@ func (o *JSONRPCRequest) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -247,5 +247,3 @@ func (v *NullableJSONRPCRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

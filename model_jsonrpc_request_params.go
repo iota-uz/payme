@@ -18,13 +18,13 @@ import (
 
 // JSONRPCRequestParams - struct for JSONRPCRequestParams
 type JSONRPCRequestParams struct {
-	CancelTransactionRequest *CancelTransactionRequest
+	CancelTransactionRequest       *CancelTransactionRequest
 	CheckPerformTransactionRequest *CheckPerformTransactionRequest
-	CheckTransactionRequest *CheckTransactionRequest
-	CreateTransactionRequest *CreateTransactionRequest
-	GetStatementRequest *GetStatementRequest
-	PerformTransactionRequest *PerformTransactionRequest
-	SetFiscalDataRequest *SetFiscalDataRequest
+	CheckTransactionRequest        *CheckTransactionRequest
+	CreateTransactionRequest       *CreateTransactionRequest
+	GetStatementRequest            *GetStatementRequest
+	PerformTransactionRequest      *PerformTransactionRequest
+	SetFiscalDataRequest           *SetFiscalDataRequest
 }
 
 // CancelTransactionRequestAsJSONRPCRequestParams is a convenience function that returns CancelTransactionRequest wrapped in JSONRPCRequestParams
@@ -75,7 +75,6 @@ func SetFiscalDataRequestAsJSONRPCRequestParams(v *SetFiscalDataRequest) JSONRPC
 		SetFiscalDataRequest: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *JSONRPCRequestParams) UnmarshalJSON(data []byte) error {
@@ -224,7 +223,7 @@ func (src JSONRPCRequestParams) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *JSONRPCRequestParams) GetActualInstance() (interface{}) {
+func (obj *JSONRPCRequestParams) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -295,5 +294,3 @@ func (v *NullableJSONRPCRequestParams) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

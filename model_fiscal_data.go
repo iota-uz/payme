@@ -12,8 +12,8 @@ Contact: danil@iota.uz
 package paymeapi
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,13 +22,13 @@ var _ MappedNullable = &FiscalData{}
 
 // FiscalData struct for FiscalData
 type FiscalData struct {
-	ReceiptId int32 `form:"receipt_id" json:"receipt_id"`
-	StatusCode int32 `form:"status_code" json:"status_code"`
-	Message string `form:"message" json:"message"`
+	ReceiptId  int32  `form:"receipt_id" json:"receipt_id"`
+	StatusCode int32  `form:"status_code" json:"status_code"`
+	Message    string `form:"message" json:"message"`
 	TerminalId string `form:"terminal_id" json:"terminal_id"`
 	FiscalSign string `form:"fiscal_sign" json:"fiscal_sign"`
-	QrCodeUrl string `form:"qr_code_url" json:"qr_code_url"`
-	Date string `form:"date" json:"date"`
+	QrCodeUrl  string `form:"qr_code_url" json:"qr_code_url"`
+	Date       string `form:"date" json:"date"`
 }
 
 type _FiscalData FiscalData
@@ -226,7 +226,7 @@ func (o *FiscalData) SetDate(v string) {
 }
 
 func (o FiscalData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -264,10 +264,10 @@ func (o *FiscalData) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -323,5 +323,3 @@ func (v *NullableFiscalData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

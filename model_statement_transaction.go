@@ -12,8 +12,8 @@ Contact: danil@iota.uz
 package paymeapi
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,17 +22,17 @@ var _ MappedNullable = &StatementTransaction{}
 
 // StatementTransaction struct for StatementTransaction
 type StatementTransaction struct {
-	Id string `form:"id" json:"id"`
-	Time int64 `form:"time" json:"time"`
-	Amount int32 `form:"amount" json:"amount"`
-	Account map[string]interface{} `form:"account" json:"account"`
-	CreateTime int64 `form:"create_time" json:"create_time"`
-	PerformTime int64 `form:"perform_time" json:"perform_time"`
-	CancelTime int64 `form:"cancel_time" json:"cancel_time"`
-	Transaction string `form:"transaction" json:"transaction"`
-	State int32 `form:"state" json:"state"`
-	Reason NullableInt32 `form:"reason" json:"reason"`
-	Receivers []Receiver `form:"receivers" json:"receivers,omitempty"`
+	Id          string                 `form:"id" json:"id"`
+	Time        int64                  `form:"time" json:"time"`
+	Amount      float64                `form:"amount" json:"amount"`
+	Account     map[string]interface{} `form:"account" json:"account"`
+	CreateTime  int64                  `form:"create_time" json:"create_time"`
+	PerformTime int64                  `form:"perform_time" json:"perform_time"`
+	CancelTime  int64                  `form:"cancel_time" json:"cancel_time"`
+	Transaction string                 `form:"transaction" json:"transaction"`
+	State       int32                  `form:"state" json:"state"`
+	Reason      NullableInt32          `form:"reason" json:"reason"`
+	Receivers   []Receiver             `form:"receivers" json:"receivers,omitempty"`
 }
 
 type _StatementTransaction StatementTransaction
@@ -41,7 +41,7 @@ type _StatementTransaction StatementTransaction
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStatementTransaction(id string, time int64, amount int32, account map[string]interface{}, createTime int64, performTime int64, cancelTime int64, transaction string, state int32, reason NullableInt32) *StatementTransaction {
+func NewStatementTransaction(id string, time int64, amount float64, account map[string]interface{}, createTime int64, performTime int64, cancelTime int64, transaction string, state int32, reason NullableInt32) *StatementTransaction {
 	this := StatementTransaction{}
 	this.Id = id
 	this.Time = time
@@ -113,9 +113,9 @@ func (o *StatementTransaction) SetTime(v int64) {
 }
 
 // GetAmount returns the Amount field value
-func (o *StatementTransaction) GetAmount() int32 {
+func (o *StatementTransaction) GetAmount() float64 {
 	if o == nil {
-		var ret int32
+		var ret float64
 		return ret
 	}
 
@@ -124,7 +124,7 @@ func (o *StatementTransaction) GetAmount() int32 {
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *StatementTransaction) GetAmountOk() (*int32, bool) {
+func (o *StatementTransaction) GetAmountOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -132,7 +132,7 @@ func (o *StatementTransaction) GetAmountOk() (*int32, bool) {
 }
 
 // SetAmount sets field value
-func (o *StatementTransaction) SetAmount(v int32) {
+func (o *StatementTransaction) SetAmount(v float64) {
 	o.Amount = v
 }
 
@@ -339,7 +339,7 @@ func (o *StatementTransaction) SetReceivers(v []Receiver) {
 }
 
 func (o StatementTransaction) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -386,10 +386,10 @@ func (o *StatementTransaction) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -445,5 +445,3 @@ func (v *NullableStatementTransaction) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

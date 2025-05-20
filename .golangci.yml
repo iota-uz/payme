@@ -1,0 +1,17 @@
+﻿run:
+  timeout: 3m
+  tests: true
+  fix: true
+
+linters:
+  enable:
+    - unused
+    - govet
+    - staticcheck
+    - revive
+    - errcheck
+    - goimports
+
+linters-settings:
+  goimports:
+    local-prefixes: github.com/your/module

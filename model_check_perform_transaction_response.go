@@ -12,8 +12,8 @@ Contact: danil@iota.uz
 package paymeapi
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &CheckPerformTransactionResponse{}
 
 // CheckPerformTransactionResponse struct for CheckPerformTransactionResponse
 type CheckPerformTransactionResponse struct {
-	Allow bool `form:"allow" json:"allow"`
+	Allow      bool               `form:"allow" json:"allow"`
 	Additional *map[string]string `form:"additional" json:"additional,omitempty"`
-	Detail *TransactionDetail `form:"detail" json:"detail,omitempty"`
+	Detail     *TransactionDetail `form:"detail" json:"detail,omitempty"`
 }
 
 type _CheckPerformTransactionResponse CheckPerformTransactionResponse
@@ -136,7 +136,7 @@ func (o *CheckPerformTransactionResponse) SetDetail(v TransactionDetail) {
 }
 
 func (o CheckPerformTransactionResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -168,10 +168,10 @@ func (o *CheckPerformTransactionResponse) UnmarshalJSON(data []byte) (err error)
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -227,5 +227,3 @@ func (v *NullableCheckPerformTransactionResponse) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

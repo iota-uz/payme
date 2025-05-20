@@ -12,8 +12,8 @@ Contact: danil@iota.uz
 package paymeapi
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,12 +22,12 @@ var _ MappedNullable = &CheckTransactionResponse{}
 
 // CheckTransactionResponse struct for CheckTransactionResponse
 type CheckTransactionResponse struct {
-	CreateTime int64 `form:"create_time" json:"create_time"`
-	PerformTime int64 `form:"perform_time" json:"perform_time"`
-	CancelTime int64 `form:"cancel_time" json:"cancel_time"`
-	Transaction string `form:"transaction" json:"transaction"`
-	State int32 `form:"state" json:"state"`
-	Reason NullableInt32 `form:"reason" json:"reason"`
+	CreateTime  int64         `form:"create_time" json:"create_time"`
+	PerformTime int64         `form:"perform_time" json:"perform_time"`
+	CancelTime  int64         `form:"cancel_time" json:"cancel_time"`
+	Transaction string        `form:"transaction" json:"transaction"`
+	State       int32         `form:"state" json:"state"`
+	Reason      NullableInt32 `form:"reason" json:"reason"`
 }
 
 type _CheckTransactionResponse CheckTransactionResponse
@@ -202,7 +202,7 @@ func (o *CheckTransactionResponse) SetReason(v int32) {
 }
 
 func (o CheckTransactionResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -238,10 +238,10 @@ func (o *CheckTransactionResponse) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -297,5 +297,3 @@ func (v *NullableCheckTransactionResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

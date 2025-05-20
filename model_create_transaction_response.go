@@ -12,8 +12,8 @@ Contact: danil@iota.uz
 package paymeapi
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,10 +22,10 @@ var _ MappedNullable = &CreateTransactionResponse{}
 
 // CreateTransactionResponse struct for CreateTransactionResponse
 type CreateTransactionResponse struct {
-	CreateTime int64 `form:"create_time" json:"create_time"`
-	Transaction string `form:"transaction" json:"transaction"`
-	State int32 `form:"state" json:"state"`
-	Receivers []Receiver `form:"receivers" json:"receivers,omitempty"`
+	CreateTime  int64      `form:"create_time" json:"create_time"`
+	Transaction string     `form:"transaction" json:"transaction"`
+	State       int32      `form:"state" json:"state"`
+	Receivers   []Receiver `form:"receivers" json:"receivers,omitempty"`
 }
 
 type _CreateTransactionResponse CreateTransactionResponse
@@ -155,7 +155,7 @@ func (o *CreateTransactionResponse) SetReceivers(v []Receiver) {
 }
 
 func (o CreateTransactionResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -188,10 +188,10 @@ func (o *CreateTransactionResponse) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -247,5 +247,3 @@ func (v *NullableCreateTransactionResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

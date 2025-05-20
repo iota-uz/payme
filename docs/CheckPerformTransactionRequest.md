@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | **int32** |  | 
+**Amount** | **float64** |  | 
 **Account** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewCheckPerformTransactionRequest
 
-`func NewCheckPerformTransactionRequest(amount int32, account map[string]interface{}, ) *CheckPerformTransactionRequest`
+`func NewCheckPerformTransactionRequest(amount float64, account map[string]interface{}, ) *CheckPerformTransactionRequest`
 
 NewCheckPerformTransactionRequest instantiates a new CheckPerformTransactionRequest object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAmount
 
-`func (o *CheckPerformTransactionRequest) GetAmount() int32`
+`func (o *CheckPerformTransactionRequest) GetAmount() float64`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *CheckPerformTransactionRequest) GetAmountOk() (*int32, bool)`
+`func (o *CheckPerformTransactionRequest) GetAmountOk() (*float64, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *CheckPerformTransactionRequest) SetAmount(v int32)`
+`func (o *CheckPerformTransactionRequest) SetAmount(v float64)`
 
 SetAmount sets Amount field to given value.
 

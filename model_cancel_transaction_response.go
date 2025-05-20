@@ -12,8 +12,8 @@ Contact: danil@iota.uz
 package paymeapi
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -23,8 +23,8 @@ var _ MappedNullable = &CancelTransactionResponse{}
 // CancelTransactionResponse struct for CancelTransactionResponse
 type CancelTransactionResponse struct {
 	Transaction string `form:"transaction" json:"transaction"`
-	CancelTime int64 `form:"cancel_time" json:"cancel_time"`
-	State int32 `form:"state" json:"state"`
+	CancelTime  int64  `form:"cancel_time" json:"cancel_time"`
+	State       int32  `form:"state" json:"state"`
 }
 
 type _CancelTransactionResponse CancelTransactionResponse
@@ -122,7 +122,7 @@ func (o *CancelTransactionResponse) SetState(v int32) {
 }
 
 func (o CancelTransactionResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,10 +152,10 @@ func (o *CancelTransactionResponse) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -211,5 +211,3 @@ func (v *NullableCancelTransactionResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **Time** | **int64** |  | 
-**Amount** | **int32** |  | 
+**Amount** | **float64** |  | 
 **Account** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewCreateTransactionRequest
 
-`func NewCreateTransactionRequest(id string, time int64, amount int32, account map[string]interface{}, ) *CreateTransactionRequest`
+`func NewCreateTransactionRequest(id string, time int64, amount float64, account map[string]interface{}, ) *CreateTransactionRequest`
 
 NewCreateTransactionRequest instantiates a new CreateTransactionRequest object
 This constructor will assign default values to properties that have it defined,
@@ -70,20 +70,20 @@ SetTime sets Time field to given value.
 
 ### GetAmount
 
-`func (o *CreateTransactionRequest) GetAmount() int32`
+`func (o *CreateTransactionRequest) GetAmount() float64`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *CreateTransactionRequest) GetAmountOk() (*int32, bool)`
+`func (o *CreateTransactionRequest) GetAmountOk() (*float64, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *CreateTransactionRequest) SetAmount(v int32)`
+`func (o *CreateTransactionRequest) SetAmount(v float64)`
 
 SetAmount sets Amount field to given value.
 
