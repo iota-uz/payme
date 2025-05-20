@@ -15,13 +15,13 @@ Name | Type | Description | Notes
 **CancelTime** | **int64** |  | 
 **Reason** | **NullableInt32** |  | 
 **Transactions** | [**[]StatementTransaction**](StatementTransaction.md) |  | 
-**Result** | [**SetFiscalDataResponseResult**](SetFiscalDataResponseResult.md) |  | 
+**Success** | **bool** |  | 
 
 ## Methods
 
 ### NewJSONRPCSuccessResponseResult
 
-`func NewJSONRPCSuccessResponseResult(allow bool, createTime int64, transaction string, state int32, performTime int64, cancelTime int64, reason NullableInt32, transactions []StatementTransaction, result SetFiscalDataResponseResult, ) *JSONRPCSuccessResponseResult`
+`func NewJSONRPCSuccessResponseResult(allow bool, createTime int64, transaction string, state int32, performTime int64, cancelTime int64, reason NullableInt32, transactions []StatementTransaction, success bool, ) *JSONRPCSuccessResponseResult`
 
 NewJSONRPCSuccessResponseResult instantiates a new JSONRPCSuccessResponseResult object
 This constructor will assign default values to properties that have it defined,
@@ -281,24 +281,24 @@ and a boolean to check if the value has been set.
 SetTransactions sets Transactions field to given value.
 
 
-### GetResult
+### GetSuccess
 
-`func (o *JSONRPCSuccessResponseResult) GetResult() SetFiscalDataResponseResult`
+`func (o *JSONRPCSuccessResponseResult) GetSuccess() bool`
 
-GetResult returns the Result field if non-nil, zero value otherwise.
+GetSuccess returns the Success field if non-nil, zero value otherwise.
 
-### GetResultOk
+### GetSuccessOk
 
-`func (o *JSONRPCSuccessResponseResult) GetResultOk() (*SetFiscalDataResponseResult, bool)`
+`func (o *JSONRPCSuccessResponseResult) GetSuccessOk() (*bool, bool)`
 
-GetResultOk returns a tuple with the Result field if it's non-nil, zero value otherwise
+GetSuccessOk returns a tuple with the Success field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetResult
+### SetSuccess
 
-`func (o *JSONRPCSuccessResponseResult) SetResult(v SetFiscalDataResponseResult)`
+`func (o *JSONRPCSuccessResponseResult) SetSuccess(v bool)`
 
-SetResult sets Result field to given value.
+SetSuccess sets Success field to given value.
 
 
 

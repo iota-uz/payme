@@ -24,8 +24,7 @@
       "description": "Sandbox Payme API server"
     }
   ],
-  "paths": {
-  },
+  "paths": {},
   "components": {
     "schemas": {
       "ErrorResponse": {
@@ -507,19 +506,11 @@
       "SetFiscalDataResponse": {
         "type": "object",
         "required": [
-          "result"
+          "success"
         ],
         "properties": {
-          "result": {
-            "type": "object",
-            "required": [
-              "success"
-            ],
-            "properties": {
-              "success": {
-                "type": "boolean"
-              }
-            }
+          "success": {
+            "type": "boolean"
           }
         }
       },

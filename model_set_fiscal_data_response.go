@@ -22,7 +22,7 @@ var _ MappedNullable = &SetFiscalDataResponse{}
 
 // SetFiscalDataResponse struct for SetFiscalDataResponse
 type SetFiscalDataResponse struct {
-	Result SetFiscalDataResponseResult `form:"result" json:"result"`
+	Success bool `form:"success" json:"success"`
 }
 
 type _SetFiscalDataResponse SetFiscalDataResponse
@@ -31,9 +31,9 @@ type _SetFiscalDataResponse SetFiscalDataResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSetFiscalDataResponse(result SetFiscalDataResponseResult) *SetFiscalDataResponse {
+func NewSetFiscalDataResponse(success bool) *SetFiscalDataResponse {
 	this := SetFiscalDataResponse{}
-	this.Result = result
+	this.Success = success
 	return &this
 }
 
@@ -45,28 +45,28 @@ func NewSetFiscalDataResponseWithDefaults() *SetFiscalDataResponse {
 	return &this
 }
 
-// GetResult returns the Result field value
-func (o *SetFiscalDataResponse) GetResult() SetFiscalDataResponseResult {
+// GetSuccess returns the Success field value
+func (o *SetFiscalDataResponse) GetSuccess() bool {
 	if o == nil {
-		var ret SetFiscalDataResponseResult
+		var ret bool
 		return ret
 	}
 
-	return o.Result
+	return o.Success
 }
 
-// GetResultOk returns a tuple with the Result field value
+// GetSuccessOk returns a tuple with the Success field value
 // and a boolean to check if the value has been set.
-func (o *SetFiscalDataResponse) GetResultOk() (*SetFiscalDataResponseResult, bool) {
+func (o *SetFiscalDataResponse) GetSuccessOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Result, true
+	return &o.Success, true
 }
 
-// SetResult sets field value
-func (o *SetFiscalDataResponse) SetResult(v SetFiscalDataResponseResult) {
-	o.Result = v
+// SetSuccess sets field value
+func (o *SetFiscalDataResponse) SetSuccess(v bool) {
+	o.Success = v
 }
 
 func (o SetFiscalDataResponse) MarshalJSON() ([]byte, error) {
@@ -79,7 +79,7 @@ func (o SetFiscalDataResponse) MarshalJSON() ([]byte, error) {
 
 func (o SetFiscalDataResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["result"] = o.Result
+	toSerialize["success"] = o.Success
 	return toSerialize, nil
 }
 
@@ -88,7 +88,7 @@ func (o *SetFiscalDataResponse) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"result",
+		"success",
 	}
 
 	allProperties := make(map[string]interface{})

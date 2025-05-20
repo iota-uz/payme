@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Result** | [**SetFiscalDataResponseResult**](SetFiscalDataResponseResult.md) |  | 
+**Success** | **bool** |  | 
 
 ## Methods
 
 ### NewSetFiscalDataResponse
 
-`func NewSetFiscalDataResponse(result SetFiscalDataResponseResult, ) *SetFiscalDataResponse`
+`func NewSetFiscalDataResponse(success bool, ) *SetFiscalDataResponse`
 
 NewSetFiscalDataResponse instantiates a new SetFiscalDataResponse object
 This constructor will assign default values to properties that have it defined,
@@ -25,24 +25,24 @@ NewSetFiscalDataResponseWithDefaults instantiates a new SetFiscalDataResponse ob
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetResult
+### GetSuccess
 
-`func (o *SetFiscalDataResponse) GetResult() SetFiscalDataResponseResult`
+`func (o *SetFiscalDataResponse) GetSuccess() bool`
 
-GetResult returns the Result field if non-nil, zero value otherwise.
+GetSuccess returns the Success field if non-nil, zero value otherwise.
 
-### GetResultOk
+### GetSuccessOk
 
-`func (o *SetFiscalDataResponse) GetResultOk() (*SetFiscalDataResponseResult, bool)`
+`func (o *SetFiscalDataResponse) GetSuccessOk() (*bool, bool)`
 
-GetResultOk returns a tuple with the Result field if it's non-nil, zero value otherwise
+GetSuccessOk returns a tuple with the Success field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetResult
+### SetSuccess
 
-`func (o *SetFiscalDataResponse) SetResult(v SetFiscalDataResponseResult)`
+`func (o *SetFiscalDataResponse) SetSuccess(v bool)`
 
-SetResult sets Result field to given value.
+SetSuccess sets Success field to given value.
 
 
 

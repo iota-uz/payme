@@ -1,4 +1,4 @@
-﻿package paymeapi
+package paymeapi
 
 // Methods
 const (

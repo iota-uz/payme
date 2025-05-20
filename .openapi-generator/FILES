@@ -30,7 +30,6 @@ docs/SetFiscalDataErrorResponse.md
 docs/SetFiscalDataErrorResponseError.md
 docs/SetFiscalDataRequest.md
 docs/SetFiscalDataResponse.md
-docs/SetFiscalDataResponseResult.md
 docs/StatementTransaction.md
 docs/TransactionDetail.md
 docs/TransactionDetailShipping.md
@@ -64,7 +63,6 @@ model_set_fiscal_data_error_response.go
 model_set_fiscal_data_error_response_error.go
 model_set_fiscal_data_request.go
 model_set_fiscal_data_response.go
-model_set_fiscal_data_response_result.go
 model_statement_transaction.go
 model_transaction_detail.go
 model_transaction_detail_shipping.go
