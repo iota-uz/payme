@@ -23,7 +23,7 @@ var _ MappedNullable = &CheckPerformTransactionResponse{}
 // CheckPerformTransactionResponse struct for CheckPerformTransactionResponse
 type CheckPerformTransactionResponse struct {
 	Allow      bool               `form:"allow" json:"allow"`
-	Additional map[string]string  `form:"additional" json:"additional,omitempty"`
+	Additional *map[string]string `form:"additional" json:"additional,omitempty"`
 	Detail     *TransactionDetail `form:"detail" json:"detail,omitempty"`
 }
 
@@ -77,14 +77,14 @@ func (o *CheckPerformTransactionResponse) GetAdditional() map[string]string {
 		var ret map[string]string
 		return ret
 	}
-	return o.Additional
+	return *o.Additional
 }
 
 // GetAdditionalOk returns a tuple with the Additional field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CheckPerformTransactionResponse) GetAdditionalOk() (map[string]string, bool) {
+func (o *CheckPerformTransactionResponse) GetAdditionalOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.Additional) {
-		return map[string]string{}, false
+		return nil, false
 	}
 	return o.Additional, true
 }
@@ -100,7 +100,7 @@ func (o *CheckPerformTransactionResponse) HasAdditional() bool {
 
 // SetAdditional gets a reference to the given map[string]string and assigns it to the Additional field.
 func (o *CheckPerformTransactionResponse) SetAdditional(v map[string]string) {
-	o.Additional = v
+	o.Additional = &v
 }
 
 // GetDetail returns the Detail field value if set, zero value otherwise.

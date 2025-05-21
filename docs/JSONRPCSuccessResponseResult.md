@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Receivers** | Pointer to [**[]Receiver**](Receiver.md) |  | [optional] 
 **PerformTime** | **int64** |  | 
 **CancelTime** | **int64** |  | 
-**Reason** | Pointer to **int32** |  | [optional] 
+**Reason** | **NullableInt32** |  | 
 **Transactions** | [**[]StatementTransaction**](StatementTransaction.md) |  | 
 **Success** | **bool** |  | 
 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewJSONRPCSuccessResponseResult
 
-`func NewJSONRPCSuccessResponseResult(allow bool, createTime int64, transaction string, state int32, performTime int64, cancelTime int64, transactions []StatementTransaction, success bool, ) *JSONRPCSuccessResponseResult`
+`func NewJSONRPCSuccessResponseResult(allow bool, createTime int64, transaction string, state int32, performTime int64, cancelTime int64, reason NullableInt32, transactions []StatementTransaction, success bool, ) *JSONRPCSuccessResponseResult`
 
 NewJSONRPCSuccessResponseResult instantiates a new JSONRPCSuccessResponseResult object
 This constructor will assign default values to properties that have it defined,
@@ -250,12 +250,17 @@ and a boolean to check if the value has been set.
 
 SetReason sets Reason field to given value.
 
-### HasReason
 
-`func (o *JSONRPCSuccessResponseResult) HasReason() bool`
+### SetReasonNil
 
-HasReason returns a boolean if a field has been set.
+`func (o *JSONRPCSuccessResponseResult) SetReasonNil(b bool)`
 
+ SetReasonNil sets the value for Reason to be an explicit nil
+
+### UnsetReason
+`func (o *JSONRPCSuccessResponseResult) UnsetReason()`
+
+UnsetReason ensures that no value is present for Reason, not even an explicit nil
 ### GetTransactions
 
 `func (o *JSONRPCSuccessResponseResult) GetTransactions() []StatementTransaction`
