@@ -12,204 +12,319 @@ Contact: danil@iota.uz
 package paymeapi
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
 
-// checks if the JSONRPCRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &JSONRPCRequest{}
-
-// JSONRPCRequest struct for JSONRPCRequest
+// JSONRPCRequest - struct for JSONRPCRequest
 type JSONRPCRequest struct {
-	Jsonrpc *string              `form:"jsonrpc" json:"jsonrpc,omitempty"`
-	Method  string               `form:"method" json:"method"`
-	Params  JSONRPCRequestParams `form:"params" json:"params"`
-	Id      int64                `form:"id" json:"id"`
+	CancelTransactionRequestWrapper       *CancelTransactionRequestWrapper
+	CheckPerformTransactionRequestWrapper *CheckPerformTransactionRequestWrapper
+	CheckTransactionRequestWrapper        *CheckTransactionRequestWrapper
+	CreateTransactionRequestWrapper       *CreateTransactionRequestWrapper
+	GetStatementRequestWrapper            *GetStatementRequestWrapper
+	PerformTransactionRequestWrapper      *PerformTransactionRequestWrapper
+	SetFiscalDataRequestWrapper           *SetFiscalDataRequestWrapper
 }
 
-type _JSONRPCRequest JSONRPCRequest
-
-// NewJSONRPCRequest instantiates a new JSONRPCRequest object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewJSONRPCRequest(method string, params JSONRPCRequestParams, id int64) *JSONRPCRequest {
-	this := JSONRPCRequest{}
-	this.Method = method
-	this.Params = params
-	this.Id = id
-	return &this
-}
-
-// NewJSONRPCRequestWithDefaults instantiates a new JSONRPCRequest object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewJSONRPCRequestWithDefaults() *JSONRPCRequest {
-	this := JSONRPCRequest{}
-	return &this
-}
-
-// GetJsonrpc returns the Jsonrpc field value if set, zero value otherwise.
-func (o *JSONRPCRequest) GetJsonrpc() string {
-	if o == nil || IsNil(o.Jsonrpc) {
-		var ret string
-		return ret
+// CancelTransactionRequestWrapperAsJSONRPCRequest is a convenience function that returns CancelTransactionRequestWrapper wrapped in JSONRPCRequest
+func CancelTransactionRequestWrapperAsJSONRPCRequest(v *CancelTransactionRequestWrapper) JSONRPCRequest {
+	return JSONRPCRequest{
+		CancelTransactionRequestWrapper: v,
 	}
-	return *o.Jsonrpc
 }
 
-// GetJsonrpcOk returns a tuple with the Jsonrpc field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JSONRPCRequest) GetJsonrpcOk() (*string, bool) {
-	if o == nil || IsNil(o.Jsonrpc) {
-		return nil, false
+// CheckPerformTransactionRequestWrapperAsJSONRPCRequest is a convenience function that returns CheckPerformTransactionRequestWrapper wrapped in JSONRPCRequest
+func CheckPerformTransactionRequestWrapperAsJSONRPCRequest(v *CheckPerformTransactionRequestWrapper) JSONRPCRequest {
+	return JSONRPCRequest{
+		CheckPerformTransactionRequestWrapper: v,
 	}
-	return o.Jsonrpc, true
 }
 
-// HasJsonrpc returns a boolean if a field has been set.
-func (o *JSONRPCRequest) HasJsonrpc() bool {
-	if o != nil && !IsNil(o.Jsonrpc) {
-		return true
+// CheckTransactionRequestWrapperAsJSONRPCRequest is a convenience function that returns CheckTransactionRequestWrapper wrapped in JSONRPCRequest
+func CheckTransactionRequestWrapperAsJSONRPCRequest(v *CheckTransactionRequestWrapper) JSONRPCRequest {
+	return JSONRPCRequest{
+		CheckTransactionRequestWrapper: v,
 	}
-
-	return false
 }
 
-// SetJsonrpc gets a reference to the given string and assigns it to the Jsonrpc field.
-func (o *JSONRPCRequest) SetJsonrpc(v string) {
-	o.Jsonrpc = &v
-}
-
-// GetMethod returns the Method field value
-func (o *JSONRPCRequest) GetMethod() string {
-	if o == nil {
-		var ret string
-		return ret
+// CreateTransactionRequestWrapperAsJSONRPCRequest is a convenience function that returns CreateTransactionRequestWrapper wrapped in JSONRPCRequest
+func CreateTransactionRequestWrapperAsJSONRPCRequest(v *CreateTransactionRequestWrapper) JSONRPCRequest {
+	return JSONRPCRequest{
+		CreateTransactionRequestWrapper: v,
 	}
-
-	return o.Method
 }
 
-// GetMethodOk returns a tuple with the Method field value
-// and a boolean to check if the value has been set.
-func (o *JSONRPCRequest) GetMethodOk() (*string, bool) {
-	if o == nil {
-		return nil, false
+// GetStatementRequestWrapperAsJSONRPCRequest is a convenience function that returns GetStatementRequestWrapper wrapped in JSONRPCRequest
+func GetStatementRequestWrapperAsJSONRPCRequest(v *GetStatementRequestWrapper) JSONRPCRequest {
+	return JSONRPCRequest{
+		GetStatementRequestWrapper: v,
 	}
-	return &o.Method, true
 }
 
-// SetMethod sets field value
-func (o *JSONRPCRequest) SetMethod(v string) {
-	o.Method = v
-}
-
-// GetParams returns the Params field value
-func (o *JSONRPCRequest) GetParams() JSONRPCRequestParams {
-	if o == nil {
-		var ret JSONRPCRequestParams
-		return ret
+// PerformTransactionRequestWrapperAsJSONRPCRequest is a convenience function that returns PerformTransactionRequestWrapper wrapped in JSONRPCRequest
+func PerformTransactionRequestWrapperAsJSONRPCRequest(v *PerformTransactionRequestWrapper) JSONRPCRequest {
+	return JSONRPCRequest{
+		PerformTransactionRequestWrapper: v,
 	}
-
-	return o.Params
 }
 
-// GetParamsOk returns a tuple with the Params field value
-// and a boolean to check if the value has been set.
-func (o *JSONRPCRequest) GetParamsOk() (*JSONRPCRequestParams, bool) {
-	if o == nil {
-		return nil, false
+// SetFiscalDataRequestWrapperAsJSONRPCRequest is a convenience function that returns SetFiscalDataRequestWrapper wrapped in JSONRPCRequest
+func SetFiscalDataRequestWrapperAsJSONRPCRequest(v *SetFiscalDataRequestWrapper) JSONRPCRequest {
+	return JSONRPCRequest{
+		SetFiscalDataRequestWrapper: v,
 	}
-	return &o.Params, true
 }
 
-// SetParams sets field value
-func (o *JSONRPCRequest) SetParams(v JSONRPCRequestParams) {
-	o.Params = v
-}
-
-// GetId returns the Id field value
-func (o *JSONRPCRequest) GetId() int64 {
-	if o == nil {
-		var ret int64
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *JSONRPCRequest) GetIdOk() (*int64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *JSONRPCRequest) SetId(v int64) {
-	o.Id = v
-}
-
-func (o JSONRPCRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *JSONRPCRequest) UnmarshalJSON(data []byte) error {
+	var err error
+	// use discriminator value to speed up the lookup
+	var jsonDict map[string]interface{}
+	err = newStrictDecoder(data).Decode(&jsonDict)
 	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o JSONRPCRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Jsonrpc) {
-		toSerialize["jsonrpc"] = o.Jsonrpc
-	}
-	toSerialize["method"] = o.Method
-	toSerialize["params"] = o.Params
-	toSerialize["id"] = o.Id
-	return toSerialize, nil
-}
-
-func (o *JSONRPCRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"method",
-		"params",
-		"id",
+		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
 	}
 
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
+	// check if the discriminator value is 'CancelTransaction'
+	if jsonDict["method"] == "CancelTransaction" {
+		// try to unmarshal JSON data into CancelTransactionRequestWrapper
+		err = json.Unmarshal(data, &dst.CancelTransactionRequestWrapper)
+		if err == nil {
+			return nil // data stored in dst.CancelTransactionRequestWrapper, return on the first match
+		} else {
+			dst.CancelTransactionRequestWrapper = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequest as CancelTransactionRequestWrapper: %s", err.Error())
 		}
 	}
 
-	varJSONRPCRequest := _JSONRPCRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varJSONRPCRequest)
-
-	if err != nil {
-		return err
+	// check if the discriminator value is 'CheckPerformTransaction'
+	if jsonDict["method"] == "CheckPerformTransaction" {
+		// try to unmarshal JSON data into CheckPerformTransactionRequestWrapper
+		err = json.Unmarshal(data, &dst.CheckPerformTransactionRequestWrapper)
+		if err == nil {
+			return nil // data stored in dst.CheckPerformTransactionRequestWrapper, return on the first match
+		} else {
+			dst.CheckPerformTransactionRequestWrapper = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequest as CheckPerformTransactionRequestWrapper: %s", err.Error())
+		}
 	}
 
-	*o = JSONRPCRequest(varJSONRPCRequest)
+	// check if the discriminator value is 'CheckTransaction'
+	if jsonDict["method"] == "CheckTransaction" {
+		// try to unmarshal JSON data into CheckTransactionRequestWrapper
+		err = json.Unmarshal(data, &dst.CheckTransactionRequestWrapper)
+		if err == nil {
+			return nil // data stored in dst.CheckTransactionRequestWrapper, return on the first match
+		} else {
+			dst.CheckTransactionRequestWrapper = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequest as CheckTransactionRequestWrapper: %s", err.Error())
+		}
+	}
 
-	return err
+	// check if the discriminator value is 'CreateTransaction'
+	if jsonDict["method"] == "CreateTransaction" {
+		// try to unmarshal JSON data into CreateTransactionRequestWrapper
+		err = json.Unmarshal(data, &dst.CreateTransactionRequestWrapper)
+		if err == nil {
+			return nil // data stored in dst.CreateTransactionRequestWrapper, return on the first match
+		} else {
+			dst.CreateTransactionRequestWrapper = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequest as CreateTransactionRequestWrapper: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'GetStatement'
+	if jsonDict["method"] == "GetStatement" {
+		// try to unmarshal JSON data into GetStatementRequestWrapper
+		err = json.Unmarshal(data, &dst.GetStatementRequestWrapper)
+		if err == nil {
+			return nil // data stored in dst.GetStatementRequestWrapper, return on the first match
+		} else {
+			dst.GetStatementRequestWrapper = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequest as GetStatementRequestWrapper: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'PerformTransaction'
+	if jsonDict["method"] == "PerformTransaction" {
+		// try to unmarshal JSON data into PerformTransactionRequestWrapper
+		err = json.Unmarshal(data, &dst.PerformTransactionRequestWrapper)
+		if err == nil {
+			return nil // data stored in dst.PerformTransactionRequestWrapper, return on the first match
+		} else {
+			dst.PerformTransactionRequestWrapper = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequest as PerformTransactionRequestWrapper: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'SetFiscalData'
+	if jsonDict["method"] == "SetFiscalData" {
+		// try to unmarshal JSON data into SetFiscalDataRequestWrapper
+		err = json.Unmarshal(data, &dst.SetFiscalDataRequestWrapper)
+		if err == nil {
+			return nil // data stored in dst.SetFiscalDataRequestWrapper, return on the first match
+		} else {
+			dst.SetFiscalDataRequestWrapper = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequest as SetFiscalDataRequestWrapper: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'CancelTransactionRequestWrapper'
+	if jsonDict["method"] == "CancelTransactionRequestWrapper" {
+		// try to unmarshal JSON data into CancelTransactionRequestWrapper
+		err = json.Unmarshal(data, &dst.CancelTransactionRequestWrapper)
+		if err == nil {
+			return nil // data stored in dst.CancelTransactionRequestWrapper, return on the first match
+		} else {
+			dst.CancelTransactionRequestWrapper = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequest as CancelTransactionRequestWrapper: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'CheckPerformTransactionRequestWrapper'
+	if jsonDict["method"] == "CheckPerformTransactionRequestWrapper" {
+		// try to unmarshal JSON data into CheckPerformTransactionRequestWrapper
+		err = json.Unmarshal(data, &dst.CheckPerformTransactionRequestWrapper)
+		if err == nil {
+			return nil // data stored in dst.CheckPerformTransactionRequestWrapper, return on the first match
+		} else {
+			dst.CheckPerformTransactionRequestWrapper = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequest as CheckPerformTransactionRequestWrapper: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'CheckTransactionRequestWrapper'
+	if jsonDict["method"] == "CheckTransactionRequestWrapper" {
+		// try to unmarshal JSON data into CheckTransactionRequestWrapper
+		err = json.Unmarshal(data, &dst.CheckTransactionRequestWrapper)
+		if err == nil {
+			return nil // data stored in dst.CheckTransactionRequestWrapper, return on the first match
+		} else {
+			dst.CheckTransactionRequestWrapper = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequest as CheckTransactionRequestWrapper: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'CreateTransactionRequestWrapper'
+	if jsonDict["method"] == "CreateTransactionRequestWrapper" {
+		// try to unmarshal JSON data into CreateTransactionRequestWrapper
+		err = json.Unmarshal(data, &dst.CreateTransactionRequestWrapper)
+		if err == nil {
+			return nil // data stored in dst.CreateTransactionRequestWrapper, return on the first match
+		} else {
+			dst.CreateTransactionRequestWrapper = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequest as CreateTransactionRequestWrapper: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'GetStatementRequestWrapper'
+	if jsonDict["method"] == "GetStatementRequestWrapper" {
+		// try to unmarshal JSON data into GetStatementRequestWrapper
+		err = json.Unmarshal(data, &dst.GetStatementRequestWrapper)
+		if err == nil {
+			return nil // data stored in dst.GetStatementRequestWrapper, return on the first match
+		} else {
+			dst.GetStatementRequestWrapper = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequest as GetStatementRequestWrapper: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'PerformTransactionRequestWrapper'
+	if jsonDict["method"] == "PerformTransactionRequestWrapper" {
+		// try to unmarshal JSON data into PerformTransactionRequestWrapper
+		err = json.Unmarshal(data, &dst.PerformTransactionRequestWrapper)
+		if err == nil {
+			return nil // data stored in dst.PerformTransactionRequestWrapper, return on the first match
+		} else {
+			dst.PerformTransactionRequestWrapper = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequest as PerformTransactionRequestWrapper: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'SetFiscalDataRequestWrapper'
+	if jsonDict["method"] == "SetFiscalDataRequestWrapper" {
+		// try to unmarshal JSON data into SetFiscalDataRequestWrapper
+		err = json.Unmarshal(data, &dst.SetFiscalDataRequestWrapper)
+		if err == nil {
+			return nil // data stored in dst.SetFiscalDataRequestWrapper, return on the first match
+		} else {
+			dst.SetFiscalDataRequestWrapper = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequest as SetFiscalDataRequestWrapper: %s", err.Error())
+		}
+	}
+
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src JSONRPCRequest) MarshalJSON() ([]byte, error) {
+	if src.CancelTransactionRequestWrapper != nil {
+		return json.Marshal(&src.CancelTransactionRequestWrapper)
+	}
+
+	if src.CheckPerformTransactionRequestWrapper != nil {
+		return json.Marshal(&src.CheckPerformTransactionRequestWrapper)
+	}
+
+	if src.CheckTransactionRequestWrapper != nil {
+		return json.Marshal(&src.CheckTransactionRequestWrapper)
+	}
+
+	if src.CreateTransactionRequestWrapper != nil {
+		return json.Marshal(&src.CreateTransactionRequestWrapper)
+	}
+
+	if src.GetStatementRequestWrapper != nil {
+		return json.Marshal(&src.GetStatementRequestWrapper)
+	}
+
+	if src.PerformTransactionRequestWrapper != nil {
+		return json.Marshal(&src.PerformTransactionRequestWrapper)
+	}
+
+	if src.SetFiscalDataRequestWrapper != nil {
+		return json.Marshal(&src.SetFiscalDataRequestWrapper)
+	}
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *JSONRPCRequest) GetActualInstance() interface{} {
+	if obj == nil {
+		return nil
+	}
+	if obj.CancelTransactionRequestWrapper != nil {
+		return obj.CancelTransactionRequestWrapper
+	}
+
+	if obj.CheckPerformTransactionRequestWrapper != nil {
+		return obj.CheckPerformTransactionRequestWrapper
+	}
+
+	if obj.CheckTransactionRequestWrapper != nil {
+		return obj.CheckTransactionRequestWrapper
+	}
+
+	if obj.CreateTransactionRequestWrapper != nil {
+		return obj.CreateTransactionRequestWrapper
+	}
+
+	if obj.GetStatementRequestWrapper != nil {
+		return obj.GetStatementRequestWrapper
+	}
+
+	if obj.PerformTransactionRequestWrapper != nil {
+		return obj.PerformTransactionRequestWrapper
+	}
+
+	if obj.SetFiscalDataRequestWrapper != nil {
+		return obj.SetFiscalDataRequestWrapper
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableJSONRPCRequest struct {

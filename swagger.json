@@ -100,8 +100,7 @@
             "type": "object",
             "additionalProperties": {}
           }
-        },
-        "x-discriminator-value": "CheckPerformTransaction"
+        }
       },
       "TransactionItem": {
         "type": "object",
@@ -195,8 +194,7 @@
             "type": "object",
             "additionalProperties": {}
           }
-        },
-        "x-discriminator-value": "CreateTransaction"
+        }
       },
       "PerformTransactionRequest": {
         "type": "object",
@@ -207,8 +205,7 @@
           "id": {
             "type": "string"
           }
-        },
-        "x-discriminator-value": "PerformTransaction"
+        }
       },
       "CancelTransactionRequest": {
         "type": "object",
@@ -223,8 +220,7 @@
           "reason": {
             "type": "integer"
           }
-        },
-        "x-discriminator-value": "CancelTransaction"
+        }
       },
       "CheckTransactionRequest": {
         "type": "object",
@@ -235,8 +231,7 @@
           "id": {
             "type": "string"
           }
-        },
-        "x-discriminator-value": "CheckTransaction"
+        }
       },
       "GetStatementRequest": {
         "type": "object",
@@ -253,8 +248,7 @@
             "type": "integer",
             "format": "int64"
           }
-        },
-        "x-discriminator-value": "GetStatement"
+        }
       },
       "StatementTransaction": {
         "type": "object",
@@ -386,8 +380,7 @@
           "fiscal_data": {
             "$ref": "#/components/schemas/FiscalData"
           }
-        },
-        "x-discriminator-value": "SetFiscalData"
+        }
       },
       "CheckPerformTransactionResponse": {
         "type": "object",
@@ -545,69 +538,39 @@
         }
       },
       "JSONRPCRequest": {
-        "type": "object",
-        "required": [
-          "method",
-          "params",
-          "id"
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CheckPerformTransactionRequestWrapper"
+          },
+          {
+            "$ref": "#/components/schemas/CreateTransactionRequestWrapper"
+          },
+          {
+            "$ref": "#/components/schemas/PerformTransactionRequestWrapper"
+          },
+          {
+            "$ref": "#/components/schemas/CancelTransactionRequestWrapper"
+          },
+          {
+            "$ref": "#/components/schemas/CheckTransactionRequestWrapper"
+          },
+          {
+            "$ref": "#/components/schemas/GetStatementRequestWrapper"
+          },
+          {
+            "$ref": "#/components/schemas/SetFiscalDataRequestWrapper"
+          }
         ],
-        "properties": {
-          "jsonrpc": {
-            "type": "string",
-            "example": "2.0"
-          },
-          "method": {
-            "type": "string",
-            "enum": [
-              "CheckPerformTransaction",
-              "CreateTransaction",
-              "PerformTransaction",
-              "CancelTransaction",
-              "CheckTransaction",
-              "GetStatement",
-              "SetFiscalData"
-            ]
-          },
-          "params": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/CheckPerformTransactionRequest"
-              },
-              {
-                "$ref": "#/components/schemas/CreateTransactionRequest"
-              },
-              {
-                "$ref": "#/components/schemas/PerformTransactionRequest"
-              },
-              {
-                "$ref": "#/components/schemas/CancelTransactionRequest"
-              },
-              {
-                "$ref": "#/components/schemas/CheckTransactionRequest"
-              },
-              {
-                "$ref": "#/components/schemas/GetStatementRequest"
-              },
-              {
-                "$ref": "#/components/schemas/SetFiscalDataRequest"
-              }
-            ],
-            "discriminator": {
-              "propertyName": "method",
-              "mapping": {
-                "CheckPerformTransaction": "#/components/schemas/CheckPerformTransactionRequest",
-                "CreateTransaction": "#/components/schemas/CreateTransactionRequest",
-                "PerformTransaction": "#/components/schemas/PerformTransactionRequest",
-                "CancelTransaction": "#/components/schemas/CancelTransactionRequest",
-                "CheckTransaction": "#/components/schemas/CheckTransactionRequest",
-                "GetStatement": "#/components/schemas/GetStatementRequest",
-                "SetFiscalData": "#/components/schemas/SetFiscalDataRequest"
-              }
-            }
-          },
-          "id": {
-            "type": "integer",
-            "format": "int64"
+        "discriminator": {
+          "propertyName": "method",
+          "mapping": {
+            "CheckPerformTransaction": "#/components/schemas/CheckPerformTransactionRequestWrapper",
+            "CreateTransaction": "#/components/schemas/CreateTransactionRequestWrapper",
+            "PerformTransaction": "#/components/schemas/PerformTransactionRequestWrapper",
+            "CancelTransaction": "#/components/schemas/CancelTransactionRequestWrapper",
+            "CheckTransaction": "#/components/schemas/CheckTransactionRequestWrapper",
+            "GetStatement": "#/components/schemas/GetStatementRequestWrapper",
+            "SetFiscalData": "#/components/schemas/SetFiscalDataRequestWrapper"
           }
         }
       },
@@ -688,6 +651,202 @@
           "id": {
             "type": "integer",
             "format": "int64"
+          }
+        }
+      },
+      "CheckPerformTransactionRequestWrapper": {
+        "type": "object",
+        "required": [
+          "jsonrpc",
+          "id",
+          "method",
+          "params"
+        ],
+        "properties": {
+          "jsonrpc": {
+            "type": "string",
+            "example": "2.0"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "CheckPerformTransaction"
+            ]
+          },
+          "params": {
+            "$ref": "#/components/schemas/CheckPerformTransactionRequest"
+          }
+        }
+      },
+      "CreateTransactionRequestWrapper": {
+        "type": "object",
+        "required": [
+          "jsonrpc",
+          "id",
+          "method",
+          "params"
+        ],
+        "properties": {
+          "jsonrpc": {
+            "type": "string",
+            "example": "2.0"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "CreateTransaction"
+            ]
+          },
+          "params": {
+            "$ref": "#/components/schemas/CreateTransactionRequest"
+          }
+        }
+      },
+      "PerformTransactionRequestWrapper": {
+        "type": "object",
+        "required": [
+          "jsonrpc",
+          "id",
+          "method",
+          "params"
+        ],
+        "properties": {
+          "jsonrpc": {
+            "type": "string",
+            "example": "2.0"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "PerformTransaction"
+            ]
+          },
+          "params": {
+            "$ref": "#/components/schemas/PerformTransactionRequest"
+          }
+        }
+      },
+      "CancelTransactionRequestWrapper": {
+        "type": "object",
+        "required": [
+          "jsonrpc",
+          "id",
+          "method",
+          "params"
+        ],
+        "properties": {
+          "jsonrpc": {
+            "type": "string",
+            "example": "2.0"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "CancelTransaction"
+            ]
+          },
+          "params": {
+            "$ref": "#/components/schemas/CancelTransactionRequest"
+          }
+        }
+      },
+      "CheckTransactionRequestWrapper": {
+        "type": "object",
+        "required": [
+          "jsonrpc",
+          "id",
+          "method",
+          "params"
+        ],
+        "properties": {
+          "jsonrpc": {
+            "type": "string",
+            "example": "2.0"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "CheckTransaction"
+            ]
+          },
+          "params": {
+            "$ref": "#/components/schemas/CheckTransactionRequest"
+          }
+        }
+      },
+      "GetStatementRequestWrapper": {
+        "type": "object",
+        "required": [
+          "jsonrpc",
+          "id",
+          "method",
+          "params"
+        ],
+        "properties": {
+          "jsonrpc": {
+            "type": "string",
+            "example": "2.0"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "GetStatement"
+            ]
+          },
+          "params": {
+            "$ref": "#/components/schemas/GetStatementRequest"
+          }
+        }
+      },
+      "SetFiscalDataRequestWrapper": {
+        "type": "object",
+        "required": [
+          "jsonrpc",
+          "id",
+          "method",
+          "params"
+        ],
+        "properties": {
+          "jsonrpc": {
+            "type": "string",
+            "example": "2.0"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "SetFiscalData"
+            ]
+          },
+          "params": {
+            "$ref": "#/components/schemas/SetFiscalDataRequest"
           }
         }
       }
