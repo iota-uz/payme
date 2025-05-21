@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Receivers** | Pointer to [**[]Receiver**](Receiver.md) |  | [optional] 
 **PerformTime** | **int64** |  | 
 **CancelTime** | **int64** |  | 
-**Reason** | **int32** |  | 
+**Reason** | Pointer to **int32** |  | [optional] 
 **Transactions** | [**[]StatementTransaction**](StatementTransaction.md) |  | 
 **Success** | **bool** |  | 
 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewJSONRPCSuccessResponseResult
 
-`func NewJSONRPCSuccessResponseResult(allow bool, createTime int64, transaction string, state int32, performTime int64, cancelTime int64, reason int32, transactions []StatementTransaction, success bool, ) *JSONRPCSuccessResponseResult`
+`func NewJSONRPCSuccessResponseResult(allow bool, createTime int64, transaction string, state int32, performTime int64, cancelTime int64, transactions []StatementTransaction, success bool, ) *JSONRPCSuccessResponseResult`
 
 NewJSONRPCSuccessResponseResult instantiates a new JSONRPCSuccessResponseResult object
 This constructor will assign default values to properties that have it defined,
@@ -250,6 +250,11 @@ and a boolean to check if the value has been set.
 
 SetReason sets Reason field to given value.
 
+### HasReason
+
+`func (o *JSONRPCSuccessResponseResult) HasReason() bool`
+
+HasReason returns a boolean if a field has been set.
 
 ### GetTransactions
 

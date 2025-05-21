@@ -27,7 +27,7 @@ type CheckTransactionResponse struct {
 	CancelTime  int64  `form:"cancel_time" json:"cancel_time"`
 	Transaction string `form:"transaction" json:"transaction"`
 	State       int32  `form:"state" json:"state"`
-	Reason      int32  `form:"reason" json:"reason"`
+	Reason      *int32 `form:"reason" json:"reason,omitempty"`
 }
 
 type _CheckTransactionResponse CheckTransactionResponse
@@ -36,14 +36,13 @@ type _CheckTransactionResponse CheckTransactionResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCheckTransactionResponse(createTime int64, performTime int64, cancelTime int64, transaction string, state int32, reason int32) *CheckTransactionResponse {
+func NewCheckTransactionResponse(createTime int64, performTime int64, cancelTime int64, transaction string, state int32) *CheckTransactionResponse {
 	this := CheckTransactionResponse{}
 	this.CreateTime = createTime
 	this.PerformTime = performTime
 	this.CancelTime = cancelTime
 	this.Transaction = transaction
 	this.State = state
-	this.Reason = reason
 	return &this
 }
 
@@ -175,28 +174,36 @@ func (o *CheckTransactionResponse) SetState(v int32) {
 	o.State = v
 }
 
-// GetReason returns the Reason field value
+// GetReason returns the Reason field value if set, zero value otherwise.
 func (o *CheckTransactionResponse) GetReason() int32 {
-	if o == nil {
+	if o == nil || IsNil(o.Reason) {
 		var ret int32
 		return ret
 	}
-
-	return o.Reason
+	return *o.Reason
 }
 
-// GetReasonOk returns a tuple with the Reason field value
+// GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CheckTransactionResponse) GetReasonOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Reason) {
 		return nil, false
 	}
-	return &o.Reason, true
+	return o.Reason, true
 }
 
-// SetReason sets field value
+// HasReason returns a boolean if a field has been set.
+func (o *CheckTransactionResponse) HasReason() bool {
+	if o != nil && !IsNil(o.Reason) {
+		return true
+	}
+
+	return false
+}
+
+// SetReason gets a reference to the given int32 and assigns it to the Reason field.
 func (o *CheckTransactionResponse) SetReason(v int32) {
-	o.Reason = v
+	o.Reason = &v
 }
 
 func (o CheckTransactionResponse) MarshalJSON() ([]byte, error) {
@@ -214,7 +221,9 @@ func (o CheckTransactionResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["cancel_time"] = o.CancelTime
 	toSerialize["transaction"] = o.Transaction
 	toSerialize["state"] = o.State
-	toSerialize["reason"] = o.Reason
+	if !IsNil(o.Reason) {
+		toSerialize["reason"] = o.Reason
+	}
 	return toSerialize, nil
 }
 
@@ -228,7 +237,6 @@ func (o *CheckTransactionResponse) UnmarshalJSON(data []byte) (err error) {
 		"cancel_time",
 		"transaction",
 		"state",
-		"reason",
 	}
 
 	allProperties := make(map[string]interface{})

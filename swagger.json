@@ -475,8 +475,7 @@
           "perform_time",
           "cancel_time",
           "transaction",
-          "state",
-          "reason"
+          "state"
         ],
         "properties": {
           "create_time": {
