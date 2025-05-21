@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **CancelTime** | **int64** |  | 
 **Transaction** | **string** |  | 
 **State** | **int32** |  | 
-**Reason** | **NullableInt32** |  | 
+**Reason** | **int32** |  | 
 
 ## Methods
 
 ### NewCheckTransactionResponse
 
-`func NewCheckTransactionResponse(createTime int64, performTime int64, cancelTime int64, transaction string, state int32, reason NullableInt32, ) *CheckTransactionResponse`
+`func NewCheckTransactionResponse(createTime int64, performTime int64, cancelTime int64, transaction string, state int32, reason int32, ) *CheckTransactionResponse`
 
 NewCheckTransactionResponse instantiates a new CheckTransactionResponse object
 This constructor will assign default values to properties that have it defined,
@@ -150,16 +150,6 @@ and a boolean to check if the value has been set.
 SetReason sets Reason field to given value.
 
 
-### SetReasonNil
-
-`func (o *CheckTransactionResponse) SetReasonNil(b bool)`
-
- SetReasonNil sets the value for Reason to be an explicit nil
-
-### UnsetReason
-`func (o *CheckTransactionResponse) UnsetReason()`
-
-UnsetReason ensures that no value is present for Reason, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

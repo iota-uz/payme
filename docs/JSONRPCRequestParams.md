@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | **float64** |  | 
-**Account** | **map[string]map[string]interface{}** |  | 
+**Account** | **map[string]interface{}** |  | 
 **Id** | **string** |  | 
 **Time** | **int64** |  | 
 **Reason** | **int32** |  | 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewJSONRPCRequestParams
 
-`func NewJSONRPCRequestParams(amount float64, account map[string]map[string]interface{}, id string, time int64, reason int32, from int64, to int64, type_ string, fiscalData FiscalData, ) *JSONRPCRequestParams`
+`func NewJSONRPCRequestParams(amount float64, account map[string]interface{}, id string, time int64, reason int32, from int64, to int64, type_ string, fiscalData FiscalData, ) *JSONRPCRequestParams`
 
 NewJSONRPCRequestParams instantiates a new JSONRPCRequestParams object
 This constructor will assign default values to properties that have it defined,
@@ -55,20 +55,20 @@ SetAmount sets Amount field to given value.
 
 ### GetAccount
 
-`func (o *JSONRPCRequestParams) GetAccount() map[string]map[string]interface{}`
+`func (o *JSONRPCRequestParams) GetAccount() map[string]interface{}`
 
 GetAccount returns the Account field if non-nil, zero value otherwise.
 
 ### GetAccountOk
 
-`func (o *JSONRPCRequestParams) GetAccountOk() (*map[string]map[string]interface{}, bool)`
+`func (o *JSONRPCRequestParams) GetAccountOk() (*map[string]interface{}, bool)`
 
 GetAccountOk returns a tuple with the Account field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccount
 
-`func (o *JSONRPCRequestParams) SetAccount(v map[string]map[string]interface{})`
+`func (o *JSONRPCRequestParams) SetAccount(v map[string]interface{})`
 
 SetAccount sets Account field to given value.
 

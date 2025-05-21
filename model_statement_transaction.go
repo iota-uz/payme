@@ -31,7 +31,7 @@ type StatementTransaction struct {
 	CancelTime  int64                  `form:"cancel_time" json:"cancel_time"`
 	Transaction string                 `form:"transaction" json:"transaction"`
 	State       int32                  `form:"state" json:"state"`
-	Reason      NullableInt32          `form:"reason" json:"reason"`
+	Reason      int32                  `form:"reason" json:"reason"`
 	Receivers   []Receiver             `form:"receivers" json:"receivers,omitempty"`
 }
 
@@ -41,7 +41,7 @@ type _StatementTransaction StatementTransaction
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStatementTransaction(id string, time int64, amount float64, account map[string]interface{}, createTime int64, performTime int64, cancelTime int64, transaction string, state int32, reason NullableInt32) *StatementTransaction {
+func NewStatementTransaction(id string, time int64, amount float64, account map[string]interface{}, createTime int64, performTime int64, cancelTime int64, transaction string, state int32, reason int32) *StatementTransaction {
 	this := StatementTransaction{}
 	this.Id = id
 	this.Time = time
@@ -281,29 +281,27 @@ func (o *StatementTransaction) SetState(v int32) {
 }
 
 // GetReason returns the Reason field value
-// If the value is explicit nil, the zero value for int32 will be returned
 func (o *StatementTransaction) GetReason() int32 {
-	if o == nil || o.Reason.Get() == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return *o.Reason.Get()
+	return o.Reason
 }
 
 // GetReasonOk returns a tuple with the Reason field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StatementTransaction) GetReasonOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Reason.Get(), o.Reason.IsSet()
+	return &o.Reason, true
 }
 
 // SetReason sets field value
 func (o *StatementTransaction) SetReason(v int32) {
-	o.Reason.Set(&v)
+	o.Reason = v
 }
 
 // GetReceivers returns the Receivers field value if set, zero value otherwise.
@@ -357,7 +355,7 @@ func (o StatementTransaction) ToMap() (map[string]interface{}, error) {
 	toSerialize["cancel_time"] = o.CancelTime
 	toSerialize["transaction"] = o.Transaction
 	toSerialize["state"] = o.State
-	toSerialize["reason"] = o.Reason.Get()
+	toSerialize["reason"] = o.Reason
 	if !IsNil(o.Receivers) {
 		toSerialize["receivers"] = o.Receivers
 	}

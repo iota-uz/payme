@@ -79,114 +79,182 @@ func SetFiscalDataRequestAsJSONRPCRequestParams(v *SetFiscalDataRequest) JSONRPC
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *JSONRPCRequestParams) UnmarshalJSON(data []byte) error {
 	var err error
-	match := 0
-	// try to unmarshal data into CancelTransactionRequest
-	err = json.Unmarshal(data, &dst.CancelTransactionRequest)
-	if err == nil {
-		jsonCancelTransactionRequest, _ := json.Marshal(dst.CancelTransactionRequest)
-		if string(jsonCancelTransactionRequest) == "{}" { // empty struct
+	// use discriminator value to speed up the lookup
+	var jsonDict map[string]interface{}
+	err = newStrictDecoder(data).Decode(&jsonDict)
+	if err != nil {
+		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
+	}
+
+	// check if the discriminator value is 'CancelTransaction'
+	if jsonDict["method"] == "CancelTransaction" {
+		// try to unmarshal JSON data into CancelTransactionRequest
+		err = json.Unmarshal(data, &dst.CancelTransactionRequest)
+		if err == nil {
+			return nil // data stored in dst.CancelTransactionRequest, return on the first match
+		} else {
 			dst.CancelTransactionRequest = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal JSONRPCRequestParams as CancelTransactionRequest: %s", err.Error())
 		}
-	} else {
-		dst.CancelTransactionRequest = nil
 	}
 
-	// try to unmarshal data into CheckPerformTransactionRequest
-	err = json.Unmarshal(data, &dst.CheckPerformTransactionRequest)
-	if err == nil {
-		jsonCheckPerformTransactionRequest, _ := json.Marshal(dst.CheckPerformTransactionRequest)
-		if string(jsonCheckPerformTransactionRequest) == "{}" { // empty struct
+	// check if the discriminator value is 'CheckPerformTransaction'
+	if jsonDict["method"] == "CheckPerformTransaction" {
+		// try to unmarshal JSON data into CheckPerformTransactionRequest
+		err = json.Unmarshal(data, &dst.CheckPerformTransactionRequest)
+		if err == nil {
+			return nil // data stored in dst.CheckPerformTransactionRequest, return on the first match
+		} else {
 			dst.CheckPerformTransactionRequest = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal JSONRPCRequestParams as CheckPerformTransactionRequest: %s", err.Error())
 		}
-	} else {
-		dst.CheckPerformTransactionRequest = nil
 	}
 
-	// try to unmarshal data into CheckTransactionRequest
-	err = json.Unmarshal(data, &dst.CheckTransactionRequest)
-	if err == nil {
-		jsonCheckTransactionRequest, _ := json.Marshal(dst.CheckTransactionRequest)
-		if string(jsonCheckTransactionRequest) == "{}" { // empty struct
+	// check if the discriminator value is 'CheckTransaction'
+	if jsonDict["method"] == "CheckTransaction" {
+		// try to unmarshal JSON data into CheckTransactionRequest
+		err = json.Unmarshal(data, &dst.CheckTransactionRequest)
+		if err == nil {
+			return nil // data stored in dst.CheckTransactionRequest, return on the first match
+		} else {
 			dst.CheckTransactionRequest = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal JSONRPCRequestParams as CheckTransactionRequest: %s", err.Error())
 		}
-	} else {
-		dst.CheckTransactionRequest = nil
 	}
 
-	// try to unmarshal data into CreateTransactionRequest
-	err = json.Unmarshal(data, &dst.CreateTransactionRequest)
-	if err == nil {
-		jsonCreateTransactionRequest, _ := json.Marshal(dst.CreateTransactionRequest)
-		if string(jsonCreateTransactionRequest) == "{}" { // empty struct
+	// check if the discriminator value is 'CreateTransaction'
+	if jsonDict["method"] == "CreateTransaction" {
+		// try to unmarshal JSON data into CreateTransactionRequest
+		err = json.Unmarshal(data, &dst.CreateTransactionRequest)
+		if err == nil {
+			return nil // data stored in dst.CreateTransactionRequest, return on the first match
+		} else {
 			dst.CreateTransactionRequest = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal JSONRPCRequestParams as CreateTransactionRequest: %s", err.Error())
 		}
-	} else {
-		dst.CreateTransactionRequest = nil
 	}
 
-	// try to unmarshal data into GetStatementRequest
-	err = json.Unmarshal(data, &dst.GetStatementRequest)
-	if err == nil {
-		jsonGetStatementRequest, _ := json.Marshal(dst.GetStatementRequest)
-		if string(jsonGetStatementRequest) == "{}" { // empty struct
+	// check if the discriminator value is 'GetStatement'
+	if jsonDict["method"] == "GetStatement" {
+		// try to unmarshal JSON data into GetStatementRequest
+		err = json.Unmarshal(data, &dst.GetStatementRequest)
+		if err == nil {
+			return nil // data stored in dst.GetStatementRequest, return on the first match
+		} else {
 			dst.GetStatementRequest = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal JSONRPCRequestParams as GetStatementRequest: %s", err.Error())
 		}
-	} else {
-		dst.GetStatementRequest = nil
 	}
 
-	// try to unmarshal data into PerformTransactionRequest
-	err = json.Unmarshal(data, &dst.PerformTransactionRequest)
-	if err == nil {
-		jsonPerformTransactionRequest, _ := json.Marshal(dst.PerformTransactionRequest)
-		if string(jsonPerformTransactionRequest) == "{}" { // empty struct
+	// check if the discriminator value is 'PerformTransaction'
+	if jsonDict["method"] == "PerformTransaction" {
+		// try to unmarshal JSON data into PerformTransactionRequest
+		err = json.Unmarshal(data, &dst.PerformTransactionRequest)
+		if err == nil {
+			return nil // data stored in dst.PerformTransactionRequest, return on the first match
+		} else {
 			dst.PerformTransactionRequest = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal JSONRPCRequestParams as PerformTransactionRequest: %s", err.Error())
 		}
-	} else {
-		dst.PerformTransactionRequest = nil
 	}
 
-	// try to unmarshal data into SetFiscalDataRequest
-	err = json.Unmarshal(data, &dst.SetFiscalDataRequest)
-	if err == nil {
-		jsonSetFiscalDataRequest, _ := json.Marshal(dst.SetFiscalDataRequest)
-		if string(jsonSetFiscalDataRequest) == "{}" { // empty struct
+	// check if the discriminator value is 'SetFiscalData'
+	if jsonDict["method"] == "SetFiscalData" {
+		// try to unmarshal JSON data into SetFiscalDataRequest
+		err = json.Unmarshal(data, &dst.SetFiscalDataRequest)
+		if err == nil {
+			return nil // data stored in dst.SetFiscalDataRequest, return on the first match
+		} else {
 			dst.SetFiscalDataRequest = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal JSONRPCRequestParams as SetFiscalDataRequest: %s", err.Error())
 		}
-	} else {
-		dst.SetFiscalDataRequest = nil
 	}
 
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.CancelTransactionRequest = nil
-		dst.CheckPerformTransactionRequest = nil
-		dst.CheckTransactionRequest = nil
-		dst.CreateTransactionRequest = nil
-		dst.GetStatementRequest = nil
-		dst.PerformTransactionRequest = nil
-		dst.SetFiscalDataRequest = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(JSONRPCRequestParams)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(JSONRPCRequestParams)")
+	// check if the discriminator value is 'CancelTransactionRequest'
+	if jsonDict["method"] == "CancelTransactionRequest" {
+		// try to unmarshal JSON data into CancelTransactionRequest
+		err = json.Unmarshal(data, &dst.CancelTransactionRequest)
+		if err == nil {
+			return nil // data stored in dst.CancelTransactionRequest, return on the first match
+		} else {
+			dst.CancelTransactionRequest = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequestParams as CancelTransactionRequest: %s", err.Error())
+		}
 	}
+
+	// check if the discriminator value is 'CheckPerformTransactionRequest'
+	if jsonDict["method"] == "CheckPerformTransactionRequest" {
+		// try to unmarshal JSON data into CheckPerformTransactionRequest
+		err = json.Unmarshal(data, &dst.CheckPerformTransactionRequest)
+		if err == nil {
+			return nil // data stored in dst.CheckPerformTransactionRequest, return on the first match
+		} else {
+			dst.CheckPerformTransactionRequest = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequestParams as CheckPerformTransactionRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'CheckTransactionRequest'
+	if jsonDict["method"] == "CheckTransactionRequest" {
+		// try to unmarshal JSON data into CheckTransactionRequest
+		err = json.Unmarshal(data, &dst.CheckTransactionRequest)
+		if err == nil {
+			return nil // data stored in dst.CheckTransactionRequest, return on the first match
+		} else {
+			dst.CheckTransactionRequest = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequestParams as CheckTransactionRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'CreateTransactionRequest'
+	if jsonDict["method"] == "CreateTransactionRequest" {
+		// try to unmarshal JSON data into CreateTransactionRequest
+		err = json.Unmarshal(data, &dst.CreateTransactionRequest)
+		if err == nil {
+			return nil // data stored in dst.CreateTransactionRequest, return on the first match
+		} else {
+			dst.CreateTransactionRequest = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequestParams as CreateTransactionRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'GetStatementRequest'
+	if jsonDict["method"] == "GetStatementRequest" {
+		// try to unmarshal JSON data into GetStatementRequest
+		err = json.Unmarshal(data, &dst.GetStatementRequest)
+		if err == nil {
+			return nil // data stored in dst.GetStatementRequest, return on the first match
+		} else {
+			dst.GetStatementRequest = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequestParams as GetStatementRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'PerformTransactionRequest'
+	if jsonDict["method"] == "PerformTransactionRequest" {
+		// try to unmarshal JSON data into PerformTransactionRequest
+		err = json.Unmarshal(data, &dst.PerformTransactionRequest)
+		if err == nil {
+			return nil // data stored in dst.PerformTransactionRequest, return on the first match
+		} else {
+			dst.PerformTransactionRequest = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequestParams as PerformTransactionRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'SetFiscalDataRequest'
+	if jsonDict["method"] == "SetFiscalDataRequest" {
+		// try to unmarshal JSON data into SetFiscalDataRequest
+		err = json.Unmarshal(data, &dst.SetFiscalDataRequest)
+		if err == nil {
+			return nil // data stored in dst.SetFiscalDataRequest, return on the first match
+		} else {
+			dst.SetFiscalDataRequest = nil
+			return fmt.Errorf("failed to unmarshal JSONRPCRequestParams as SetFiscalDataRequest: %s", err.Error())
+		}
+	}
+
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON

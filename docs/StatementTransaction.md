@@ -13,14 +13,14 @@ Name | Type | Description | Notes
 **CancelTime** | **int64** |  | 
 **Transaction** | **string** |  | 
 **State** | **int32** |  | 
-**Reason** | **NullableInt32** |  | 
+**Reason** | **int32** |  | 
 **Receivers** | Pointer to [**[]Receiver**](Receiver.md) |  | [optional] 
 
 ## Methods
 
 ### NewStatementTransaction
 
-`func NewStatementTransaction(id string, time int64, amount float64, account map[string]interface{}, createTime int64, performTime int64, cancelTime int64, transaction string, state int32, reason NullableInt32, ) *StatementTransaction`
+`func NewStatementTransaction(id string, time int64, amount float64, account map[string]interface{}, createTime int64, performTime int64, cancelTime int64, transaction string, state int32, reason int32, ) *StatementTransaction`
 
 NewStatementTransaction instantiates a new StatementTransaction object
 This constructor will assign default values to properties that have it defined,
@@ -235,16 +235,6 @@ and a boolean to check if the value has been set.
 SetReason sets Reason field to given value.
 
 
-### SetReasonNil
-
-`func (o *StatementTransaction) SetReasonNil(b bool)`
-
- SetReasonNil sets the value for Reason to be an explicit nil
-
-### UnsetReason
-`func (o *StatementTransaction) UnsetReason()`
-
-UnsetReason ensures that no value is present for Reason, not even an explicit nil
 ### GetReceivers
 
 `func (o *StatementTransaction) GetReceivers() []Receiver`
