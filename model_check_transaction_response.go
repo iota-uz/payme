@@ -27,7 +27,7 @@ type CheckTransactionResponse struct {
 	CancelTime  int64  `form:"cancel_time" json:"cancel_time"`
 	Transaction string `form:"transaction" json:"transaction"`
 	State       int32  `form:"state" json:"state"`
-	Reason      *int32 `form:"reason" json:"reason,omitempty"`
+	Reason      *int32 `form:"reason" json:"reason"`
 }
 
 type _CheckTransactionResponse CheckTransactionResponse

@@ -36,6 +36,7 @@ docs/SetFiscalDataErrorResponseError.md
 docs/SetFiscalDataRequest.md
 docs/SetFiscalDataRequestWrapper.md
 docs/SetFiscalDataResponse.md
+docs/SetFiscalDataType.md
 docs/StatementTransaction.md
 docs/TransactionDetail.md
 docs/TransactionDetailShipping.md
@@ -75,6 +76,7 @@ model_set_fiscal_data_error_response_error.go
 model_set_fiscal_data_request.go
 model_set_fiscal_data_request_wrapper.go
 model_set_fiscal_data_response.go
+model_set_fiscal_data_type.go
 model_statement_transaction.go
 model_transaction_detail.go
 model_transaction_detail_shipping.go

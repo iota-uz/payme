@@ -20,7 +20,7 @@ type {{classname}} struct {
 {{#deprecated}}
 	// Deprecated
 {{/deprecated}}
-	{{name}} {{^required}}{{^isNullable}}{{^isArray}}{{^isFreeFormObject}}*{{/isFreeFormObject}}{{/isArray}}{{/isNullable}}{{/required}}{{{dataType}}} `form:"{{baseName}}" json:"{{baseName}}{{^required}},omitempty{{/required}}"`{{#description}} // {{.}}{{/description}}
+    {{name}} {{^required}}{{^isNullable}}{{^isArray}}{{^isFreeFormObject}}*{{/isFreeFormObject}}{{/isArray}}{{/isNullable}}{{/required}}{{{dataType}}}{{#vendorExtensions.x-go-tag}} {{{.}}}{{/vendorExtensions.x-go-tag}}{{^vendorExtensions.x-go-tag}} `form:"{{baseName}}" json:"{{baseName}}{{^required}},omitempty{{/required}}"`{{/vendorExtensions.x-go-tag}}{{#description}} // {{.}}{{/description}}
 {{/vars}}
 {{#isAdditionalPropertiesTrue}}
 	AdditionalProperties map[string]interface{}
@@ -437,7 +437,7 @@ func (o *{{{classname}}}) UnmarshalJSON(data []byte) (err error) {
 	{{#deprecated}}
 		// Deprecated
 	{{/deprecated}}
-		{{name}} {{^required}}{{^isNullable}}{{^isArray}}{{^isFreeFormObject}}*{{/isFreeFormObject}}{{/isArray}}{{/isNullable}}{{/required}}{{{dataType}}} `form:"{{baseName}}" json:"{{baseName}}{{^required}},omitempty{{/required}}"`{{#description}} // {{.}}{{/description}}
+    {{name}} {{^required}}{{^isNullable}}{{^isArray}}{{^isFreeFormObject}}*{{/isFreeFormObject}}{{/isArray}}{{/isNullable}}{{/required}}{{{dataType}}}{{#vendorExtensions.x-go-tag}} {{{.}}}{{/vendorExtensions.x-go-tag}}{{^vendorExtensions.x-go-tag}} `form:"{{baseName}}" json:"{{baseName}}{{^required}},omitempty{{/required}}"`{{/vendorExtensions.x-go-tag}}{{#description}} // {{.}}{{/description}}
 	{{/vars}}
 	}
 

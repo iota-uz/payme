@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
-**Type** | **string** |  | 
+**Type** | [**SetFiscalDataType**](SetFiscalDataType.md) |  | 
 **FiscalData** | [**FiscalData**](FiscalData.md) |  | 
 
 ## Methods
 
 ### NewSetFiscalDataRequest
 
-`func NewSetFiscalDataRequest(id string, type_ string, fiscalData FiscalData, ) *SetFiscalDataRequest`
+`func NewSetFiscalDataRequest(id string, type_ SetFiscalDataType, fiscalData FiscalData, ) *SetFiscalDataRequest`
 
 NewSetFiscalDataRequest instantiates a new SetFiscalDataRequest object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetId sets Id field to given value.
 
 ### GetType
 
-`func (o *SetFiscalDataRequest) GetType() string`
+`func (o *SetFiscalDataRequest) GetType() SetFiscalDataType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *SetFiscalDataRequest) GetTypeOk() (*string, bool)`
+`func (o *SetFiscalDataRequest) GetTypeOk() (*SetFiscalDataType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *SetFiscalDataRequest) SetType(v string)`
+`func (o *SetFiscalDataRequest) SetType(v SetFiscalDataType)`
 
 SetType sets Type field to given value.
 

@@ -22,9 +22,9 @@ var _ MappedNullable = &SetFiscalDataRequest{}
 
 // SetFiscalDataRequest struct for SetFiscalDataRequest
 type SetFiscalDataRequest struct {
-	Id         string     `form:"id" json:"id"`
-	Type       string     `form:"type" json:"type"`
-	FiscalData FiscalData `form:"fiscal_data" json:"fiscal_data"`
+	Id         string            `form:"id" json:"id"`
+	Type       SetFiscalDataType `form:"type" json:"type"`
+	FiscalData FiscalData        `form:"fiscal_data" json:"fiscal_data"`
 }
 
 type _SetFiscalDataRequest SetFiscalDataRequest
@@ -33,7 +33,7 @@ type _SetFiscalDataRequest SetFiscalDataRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSetFiscalDataRequest(id string, type_ string, fiscalData FiscalData) *SetFiscalDataRequest {
+func NewSetFiscalDataRequest(id string, type_ SetFiscalDataType, fiscalData FiscalData) *SetFiscalDataRequest {
 	this := SetFiscalDataRequest{}
 	this.Id = id
 	this.Type = type_
@@ -74,9 +74,9 @@ func (o *SetFiscalDataRequest) SetId(v string) {
 }
 
 // GetType returns the Type field value
-func (o *SetFiscalDataRequest) GetType() string {
+func (o *SetFiscalDataRequest) GetType() SetFiscalDataType {
 	if o == nil {
-		var ret string
+		var ret SetFiscalDataType
 		return ret
 	}
 
@@ -85,7 +85,7 @@ func (o *SetFiscalDataRequest) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *SetFiscalDataRequest) GetTypeOk() (*string, bool) {
+func (o *SetFiscalDataRequest) GetTypeOk() (*SetFiscalDataType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *SetFiscalDataRequest) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *SetFiscalDataRequest) SetType(v string) {
+func (o *SetFiscalDataRequest) SetType(v SetFiscalDataType) {
 	o.Type = v
 }
 

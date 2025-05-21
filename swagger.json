@@ -371,11 +371,7 @@
             "type": "string"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "PERFORM",
-              "CANCEL"
-            ]
+            "$ref": "#/components/schemas/SetFiscalDataType"
           },
           "fiscal_data": {
             "$ref": "#/components/schemas/FiscalData"
@@ -498,7 +494,8 @@
           },
           "reason": {
             "type": "integer",
-            "nullable": true
+            "nullable": true,
+            "x-go-tag": "`form:\"reason\" json:\"reason\"`"
           }
         }
       },
@@ -848,6 +845,14 @@
             "$ref": "#/components/schemas/SetFiscalDataRequest"
           }
         }
+      },
+      "SetFiscalDataType": {
+        "type": "string",
+        "description": "Type of fiscal operation",
+        "enum": [
+          "PERFORM",
+          "CANCEL"
+        ]
       }
     },
     "securitySchemes": {
